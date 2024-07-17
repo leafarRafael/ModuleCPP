@@ -6,17 +6,17 @@
 #    By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2024/07/17 08:03:20 by rbutzke          ###   ########.fr        #
+#    Updated: 2024/07/17 16:00:14 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-----------------------------------------------------------------------------------------
 # Static library
-NAME		:= violence
+NAME		:= sed_is_for_losers
 
 #-----------------------------------------------------------------------------------------
 # Compiler and flags
-CFLAGS		:=	-Wall -Werror -Wextra -std=c++98 -g3
+CFLAGS		:=	#-Wall -Werror -Wextra -std=c++98 -g3
 CPP			:=	c++
 O_FLAGS		:=	-c
 
@@ -34,7 +34,7 @@ DIRECTORY	:= src/
 
 #-----------------------------------------------------------------------------------------
 # Source files
-FILES		:= main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+FILES		:= main.cpp ValidArguments.cpp
 
 #-----------------------------------------------------------------------------------------
 # Source files
