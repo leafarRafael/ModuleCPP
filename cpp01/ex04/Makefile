@@ -6,7 +6,7 @@
 #    By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2024/07/17 16:00:14 by rbutzke          ###   ########.fr        #
+#    Updated: 2024/07/18 08:59:27 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME		:= sed_is_for_losers
 
 #-----------------------------------------------------------------------------------------
 # Compiler and flags
-CFLAGS		:=	#-Wall -Werror -Wextra -std=c++98 -g3
+CFLAGS		:=	-Wall -Werror -Wextra -std=c++98 -g3
 CPP			:=	c++
 O_FLAGS		:=	-c
 

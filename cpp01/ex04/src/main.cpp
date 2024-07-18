@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/17 18:38:53 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/18 08:37:38 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits>
 #include <fstream>
-#include <iostream>
 #include <string>
 
 std::string 	cpyFile(const char *input);
@@ -68,13 +66,12 @@ std::string cpyFile(const char *input)
 
 void	replace(std::string & file, std::string orin, std::string newstr)
 {
-	size_t reFind;
+	size_t	reFind;
 
 	reFind = file.find(orin);
 	if (reFind == std::string::npos)
 		return ;
 	file.erase(reFind, orin.length());
 	file.insert(reFind, newstr);
-	//file.replace(file.find(orin), orin.length(), newstr);
 	replace(file, orin, newstr);
 }
