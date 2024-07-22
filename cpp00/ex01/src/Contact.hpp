@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:18:11 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/14 12:07:52 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/22 09:05:20 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
- #define CONTACT_CPP
+ #define CONTACT_HPP
 
-#include <iostream>
 #include <string>
 
 class Contact
@@ -33,11 +32,6 @@ class Contact
 		std::string getNickName();
 		std::string getPhoneNumber();
 		std::string getDarkestSecret();
-		void		setFirstName(std::string FName);
-		void		setLastName(std::string LName);
-		void		setNickName(std::string NName);
-		void		setPhoneNumber(std::string PNbr);
-		void		setDarkestSecret(std::string DScrt);
 };
 
 #endif

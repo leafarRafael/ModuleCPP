@@ -6,26 +6,19 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/19 15:04:43 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/16 11:14:18 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
 
-int	damn_harl(char *str);
+Zombie* newZombie(std::string name);
+void 	randomChump(std::string name);
 
-int main(int argc, char **argv)
+int main( void )
 {
-	Harl		harl;
-
-	if (argc != 2)
-	{
-		std::cout << "[ Probably complaining about insignificant problems ]\n";
-		return (1);
-	}
-	harl.complain(std::string(argv[1]));
-	return 0;
+	randomChump("STACK ZOMBIE");
+	std::cout << "\n";
+	delete(newZombie("HEAP ZOMBIE"));
+	return (0);
 }
-

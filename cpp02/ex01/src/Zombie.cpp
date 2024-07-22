@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/19 15:04:43 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/07/15 11:22:05 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/07/16 11:03:30 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
 
-int	damn_harl(char *str);
+Zombie::Zombie(){};
 
-int main(int argc, char **argv)
+Zombie::~Zombie()
 {
-	Harl		harl;
+	std::cout << "\n" << this->_name << std::endl;
+};
 
-	if (argc != 2)
-	{
-		std::cout << "[ Probably complaining about insignificant problems ]\n";
-		return (1);
-	}
-	harl.complain(std::string(argv[1]));
-	return 0;
+Zombie::Zombie(std::string name)
+{
+	this->_name = name;
+	announce();
+};
+
+void		Zombie::announce( void )
+{
+	std::cout << _name << ": Braiiiiiiinnnzzz";
 }
-

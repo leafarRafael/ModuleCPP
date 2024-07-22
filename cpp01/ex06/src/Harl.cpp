@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:00:04 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/18 15:50:26 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/19 15:08:42 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,41 @@ void Harl::error()
 		<< "This is unacceptable! I want to speak to the manager now.\n";
 };
 
-void Harl::complain(int i)
-{
-	t_pointer	ptr[4] = {
-		{DEBUG, &Harl::debug},
-		{INFO, &Harl::info},
-		{WARNING, &Harl::warning},
-		{ERROR, &Harl::error}};
+static int	damn_harl(std::string str);
 
-	while (i < 4)
+void Harl::complain(std::string input)
+{
+	int			i;
+
+	i = damn_harl(input);
+	switch (i)
 	{
-		(this->*(ptr[i].function))();
-		i++;
+		case 0:
+			std::cout << "[ Probably complaining about insignificant problems ]\n";
+			break ;
+		case 1:
+			debug();
+		case 2:
+			info();
+		case 3:
+			warning();
+		case 4:
+			error();
 	}
 };
 
+static int	damn_harl(std::string str)
+{
+	std::string badHarl(str);
+	t_input		input[5] = {{DEBUG, 1},
+							{INFO, 2},
+							{WARNING, 3},
+							{ERROR, 4}};
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (input[i].input == badHarl)
+			return (input[i].index);
+	}
+	return (0);
+}

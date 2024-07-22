@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/19 15:04:43 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/07/15 10:58:57 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/07/16 10:54:54 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef ZOMBIE_HPP
+ #define ZOMBIE_HPP
+
 #include <iostream>
-#include <string>
 
-int	damn_harl(char *str);
-
-int main(int argc, char **argv)
+class Zombie
 {
-	Harl		harl;
+	private:
+		std::string _name;
 
-	if (argc != 2)
-	{
-		std::cout << "[ Probably complaining about insignificant problems ]\n";
-		return (1);
-	}
-	harl.complain(std::string(argv[1]));
-	return 0;
-}
+	public:
+		Zombie();
+		~Zombie();
+		Zombie(std::string name);
+		void		announce(void);
+};
 
+
+#endif

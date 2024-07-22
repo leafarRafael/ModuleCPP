@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:47:17 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/14 19:24:05 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/22 09:11:04 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ static std::string addAtt(std::string option)
 
 void PhoneBook::fullContact(int index)
 {
-	std::cout << _contact[index].getFirstName() << std::endl
-		<< _contact[index].getLastName() << std::endl
-		<< _contact[index].getNickName() << std::endl
-		<< _contact[index].getPhoneNumber() << std::endl
-		<< _contact[index].getDarkestSecret() << std::endl;
+	std::cout << "First name: " << _contact[index].getFirstName() << std::endl
+		<< "Last name: " << _contact[index].getLastName() << std::endl
+		<< "Nick name: " << _contact[index].getNickName() << std::endl
+		<< "Phone Number: " << _contact[index].getPhoneNumber() << std::endl
+		<< "Darkest Secret: " << _contact[index].getDarkestSecret() << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 08:52:24 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/18 15:51:16 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/19 14:58:56 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Harl
 	public:
 		Harl();
 		~Harl();
-		void complain(int i);
+		void complain(std::string input);
 
 };
 

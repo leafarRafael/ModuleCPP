@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:44:39 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/14 18:41:39 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/22 09:07:46 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class PhoneBook
 {
 	private:
 		Contact _contact[8];
-		int		_index;
 		void 	fullContact(int index);
 		void	allContact(int index);
 		void	putContact(int index);
