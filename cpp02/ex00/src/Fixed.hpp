@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 10:58:57 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/16 10:54:54 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/07/23 08:04:37 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/07/23 10:42:45 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
- #define ZOMBIE_HPP
+#ifndef FIXED_HPP
+ #define FIXED_HPP
 
-#include <iostream>
-
-class Zombie
+class Fixed
 {
 	private:
-		std::string _name;
+		int					_integer;
+		static const int	_fractional;
 
 	public:
-		Zombie();
-		~Zombie();
-		Zombie(std::string name);
-		void		announce(void);
-};
+		Fixed();
+		Fixed(const Fixed &origin);
+		Fixed &operator=(const Fixed &origin);
+		~Fixed();
 
+
+		int getRawBits() const;
+		void setRawBits(int const raw);
+};
 
 #endif
