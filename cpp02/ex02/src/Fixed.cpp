@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 09:09:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/23 17:44:56 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/24 10:32:29 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,23 @@ const int	Fixed::_bits = 8;
 
 //////////////////////Constructor///////////////////////////
 Fixed::Fixed(): _value(0)
-{	std::cout << "Default constructor called" << std::endl;}
+{	
+	//std::cout << "Default constructor called" << std::endl;
+}
 
 Fixed::Fixed(const int add_int): _value(add_int << _bits)
-{	std::cout << "Int constructor called" << std::endl;}
+{	
+	//std::cout << "Int constructor called" << std::endl;
+}
 
 Fixed::Fixed(const float add_float): _value(roundf(add_float * (1 << _bits)))
-{	std::cout << "Float constructor called" << std::endl;}
+{	
+	//std::cout << "Float constructor called" << std::endl;
+}
 
 Fixed::Fixed(const Fixed &origin)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	*this = origin;
 }
 
@@ -37,14 +43,16 @@ Fixed::Fixed(const Fixed &origin)
 //////////////////////Overload copy assignment operator///////////
 Fixed &Fixed::operator=(const Fixed &origin)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	this->setRawBits(origin._value);
 	return (*this);
 }
 
 //////////////////////Destructor methods///////////////////////////
 Fixed::~Fixed()
-{	std::cout << "Destructor called" << std::endl;}
+{	
+	//std::cout << "Destructor called" << std::endl;
+}
 
 
 
@@ -54,8 +62,6 @@ float Fixed::toFloat() const
 
 int Fixed::toInt() const
 {	return (_value >> _bits); }
-
-
 
 ////////////////////// Methods getters setters ///////////////////////////
 int Fixed::getRawBits() const
