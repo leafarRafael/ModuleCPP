@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 08:04:37 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/23 17:23:10 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/24 11:40:28 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 
 #include <ostream>
 
-
 class Fixed
 {
 	private:
 		int					_value;
 		static const int	_bits;
-
 
 	public:
 	//methods
@@ -45,7 +43,7 @@ class Fixed
 		bool operator>=(Fixed & ref) const;
 		bool operator==(Fixed & ref) const;
 		bool operator!=(Fixed & ref) const;
-	
+
 	//Orverload arithmetic operators
 		Fixed operator-(const Fixed & ref) const;
 		Fixed operator+(const Fixed & ref) const;
@@ -57,7 +55,7 @@ class Fixed
 		Fixed &operator++();
 		Fixed operator--(int);
 		Fixed operator++(int);
-	
+
 	//static member function
 		static Fixed &min(Fixed & ref_A, Fixed & ref_B);
 		static const Fixed &min(const Fixed & ref_A, const Fixed & ref_B);
