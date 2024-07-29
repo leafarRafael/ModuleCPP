@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:00:04 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/20 14:39:35 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/27 17:16:55 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,4 @@ void Harl::complain(std::string level)
 			(this->*(ptr[i].function))();
 	}
 };
+
