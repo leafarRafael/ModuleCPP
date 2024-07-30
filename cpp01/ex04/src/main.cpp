@@ -6,12 +6,13 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/30 09:58:15 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/30 10:26:38 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <string>
+#include "ValidArguments.hpp"
 
 std::string 	cpyFile(const char *input);
 int				validArguments(int argc, char **argv);
@@ -23,13 +24,16 @@ int main(int argc, char **argv)
 	std::string		input[3];
 	std::string		newFile;
 	std::string		str;
+	std::ofstream 	outfile;
 
 	if (validArguments(argc, argv))
 		return (1);
 	cpyArguments(argc, argv, input);
 	str = cpyFile(input[0].c_str());
 	newFile = input[0] + ".replace";
-	std::ofstream outfile(newFile.c_str());
+	outfile(newFile.c_str());
+	if (!outfile.is_open())
+		return (msgError());
 	if (input[1] != input[2])
 		replace(str, input[1], input[2]);
 	outfile << str;
