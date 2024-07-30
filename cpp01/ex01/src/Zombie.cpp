@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:41:23 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/16 15:13:13 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/30 08:57:16 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ Zombie::Zombie(){};
 
 Zombie::~Zombie()
 {
-	std::cout << _name << '\n';
-};
+	std::cout << _name << " called destructor\n";
+}
 
 void		Zombie::announce( void )
 {

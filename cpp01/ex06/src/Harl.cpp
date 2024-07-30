@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:00:04 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/19 15:08:42 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/28 15:41:24 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,22 @@ void Harl::complain(std::string input)
 			break ;
 		case 1:
 			debug();
+			info();
+			warning();
+			error();
+			break ;
 		case 2:
 			info();
+			warning();
+			error();
+			break ;
 		case 3:
 			warning();
+			error();
+			break ;
 		case 4:
 			error();
+			break ;
 	}
 };
 

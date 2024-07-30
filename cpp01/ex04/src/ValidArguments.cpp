@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ValidArguments.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:41:56 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/18 13:31:25 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/30 09:51:48 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 
 static int	nbrArguments(int argc);
 static int	typeArguments(char **argv);
