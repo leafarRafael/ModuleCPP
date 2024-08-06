@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 09:09:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/29 13:32:03 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/08/03 10:51:11 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Fixed::~Fixed() {}
 
 //////////////////////Conversion methods///////////////////////////
 float Fixed::toFloat() const
-{	return ((float)_value / (1 << Fixed::_bits));}
+{	return ((float)_value / (1 << _bits));}
 
 int Fixed::toInt() const
 {	return (_value >> _bits); }

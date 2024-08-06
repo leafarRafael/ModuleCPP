@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/29 15:54:45 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/08/05 13:16:27 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,6 +330,6 @@ static void putObject(Fixed object)
 static void result(Fixed expected, Fixed result)
 {
 
-	std::cout << MAGENTA << "Expected = " << GREEN << expected << RESET << std::endl;
+	std::cout << MAGENTA "Expected = " GREEN << expected << RESET << std::endl;
 	std::cout << MAGENTA << "Result = " << GREEN << result << RESET << std::endl;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:31:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/16 20:40:40 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/31 10:58:57 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
  #define HUMANA_HPP
 
 #include "Weapon.hpp"
-#include <iostream>
 
 class HumanA
 {

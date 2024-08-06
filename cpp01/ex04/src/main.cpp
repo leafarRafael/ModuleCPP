@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rbutzke <rbutzke@student.42so.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/30 10:26:38 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/07/31 08:49:19 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ int main(int argc, char **argv)
 	std::string		input[3];
 	std::string		newFile;
 	std::string		str;
-	std::ofstream 	outfile;
 
 	if (validArguments(argc, argv))
 		return (1);
 	cpyArguments(argc, argv, input);
 	str = cpyFile(input[0].c_str());
 	newFile = input[0] + ".replace";
-	outfile(newFile.c_str());
+	std::ofstream outfile(newFile.c_str());
 	if (!outfile.is_open())
 		return (msgError());
 	if (input[1] != input[2])
