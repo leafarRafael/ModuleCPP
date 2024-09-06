@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 09:09:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/06 13:05:02 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/06 14:53:39 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ void	ClapTrap::beRepaired(unsigned int amount){
 		std::cout << "ClapTrap " << this->_name << " no have energy to repaired.\n";
 		return ;
 	}
-	if (!this->_hitPoints){
-		std::cout << "ClapTrap " << this->_name << " is dead.\n";
+	if (!this->_hitPoints)
 		return ;
-	}
 	this->_hitPoints += amount;
 	this->_energyPoints--;
 	std::cout 
@@ -51,27 +49,28 @@ void	ClapTrap::takeDamage(unsigned int amount){
 		this->_hitPoints = 0;
 	else
 	 	this->_hitPoints -= amount;
-	std::cout << RED << "[Healtlife " << this->_hitPoints << ']' << RESET << std::endl;;
+	std::cout << RED << "[Healtlife " << this->_hitPoints << ']' << RESET << std::endl;
+	if (!this->_hitPoints)
+		std::cout << "ClapTrap " << this->_name << " is dead.\n";
 }
 
 //************************************************************************************
 //********************************* Orthodox Canonical class form ********************
 //************************************************************************************
 ClapTrap::~ClapTrap(){
-	std::cout << BLUE  "The destructor called " RESET << this->_name << std::endl;
+	std::cout << BLUE  "Destructor ClapTrap called: " << this->_name  << RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap & origin){
-	std::cout << BLUE << "Copy constructor called:\n" << RESET;
+	std::cout << BLUE << "Copy constructor ClapTrap called:\n" << RESET;
 	this->_name = origin.getName();
 	this->_hitPoints = origin.getHitPoints();
 	this->_energyPoints = origin.getEnergyPoints();
 	this->_attackDamage = origin.getAttackDamage();
-	
 }
 
 ClapTrap::ClapTrap(){
-	std::cout << BLUE << "Constructor default called:\n" << RESET;
+	std::cout << BLUE << "Default constructor ClapTrap called:\n" << RESET;
 	this->_name = "";
 	this->_attackDamage = 0;
 	this->_energyPoints = 10;
@@ -79,14 +78,14 @@ ClapTrap::ClapTrap(){
 }
 
 ClapTrap::ClapTrap(std::string name):_name(name){
-	std::cout << BLUE << "Constructor with initialization parameter called:\n" << RESET;
+	std::cout << BLUE << "Constructor ClapTrap with initialization parameter called:\n" << RESET;
 	this->_attackDamage = 0;
 	this->_energyPoints = 10;
 	this->_hitPoints = 10;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap & origin){
-	std::cout << BLUE << "Copy assignment operator called:\n" << RESET;
+	std::cout << BLUE << "ClapTrap copy assignment operator called:\n" << RESET;
 	this->_name = origin._name;
 	this->_attackDamage = origin._attackDamage;
 	this->_energyPoints = origin._energyPoints;

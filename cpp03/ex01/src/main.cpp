@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/06 13:11:00 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/06 18:29:05 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 #include <cstdlib>
 #include <ctime>
 #include <unistd.h>
+#include "ScavTrap.hpp"
 
 static void format_msg(const char *msg1, const char *msg2);
 static void turn_msg(const std::string name);
-static void defineTurnAction(ClapTrap & active, ClapTrap & passive);
+static void clapTurnAction(ClapTrap & active, ClapTrap & passive);
+static void scavTurnAction(ScavTrap & scav, ClapTrap & passive1, ClapTrap & passive2);
 int test();
 static void msgTest(std::string msg);
 int (*select_test(int i))();
-int	nbr_teste = 2;
+int	nbr_teste = 3;
 
 int main()
 {
@@ -49,6 +51,7 @@ int test() {
 	std::cout << std::endl;
 	return 0;
 }
+
 
 int test00(){
 	msgTest(" Testes mothods orthodox ");
@@ -88,41 +91,90 @@ int test00(){
 	return (0);
 }
 
+
 int test01(){
+	msgTest(" Testes mothods orthodox ScavTrap");
+
+	std::cout << GREEN "\n ** Object initialization methods ** \n" RESET;
+	format_msg("\n", "ScavTrap orvil;");
+	ScavTrap orvil;
+	format_msg("\n", "ScavTrap a(\"Loren\");");
+	ScavTrap loren("Loren");
+	format_msg("\n", "ScavTrap c(a);");
+	ScavTrap bob(loren);
+	format_msg("\n", "orvil = loren;");
+	orvil = bob;
+
+	bob.setName("Bob");
+	std::cout << GREEN "\n ** Methods seters **\n" RESET;
+	format_msg("setName:\n", "orvil.setName(\"orvil\");");
+	orvil.setName("orvil");
+	format_msg("setHitPoints:\n", "orvil.setHitPoints(150);");
+	orvil.setHitPoints(150);
+	format_msg("setAttackDamage:\n", "orvil.setAttackDamage(40);");
+	orvil.setAttackDamage(40);
+	format_msg("setEnergyPoints:\n", "orvil.setEnergyPoints(100);");
+	orvil.setEnergyPoints(100);
+
+	std::cout << GREEN "\n ** Methods geters **\n" RESET;
+	std::cout 
+		<< BLUE << "getName: \n" << RESET
+			<< "loren.getName(); = " << loren.getName() << "\n\n"
+		<< BLUE << "getHitPoints: \n" << RESET
+			<< "loren.getHitPoints(); = " << loren.getHitPoints() << "\n\n"
+		<< BLUE << "getAttackDamage: \n" << RESET
+			<< "loren.getAttackDamage();  = " << loren.getAttackDamage() << "\n\n"
+		<< BLUE << "getEnergyPoints: \n" << RESET
+			<< "loren.getEnergyPoints(); = " << loren.getEnergyPoints() << "\n\n";
+
+	std::cout << GREEN "\n ** Destuctor default **\n" RESET;
+	return (0);
+}
+
+int test02(){
 	msgTest(" Testes member functions ");
 
 	ClapTrap tory("Tory");
 	format_msg(NULL, "ClapTrap tory(\"Tory\");");
 	ClapTrap kimberly("Kimberly");
 	format_msg(NULL, "ClapTrap kimberly(\"Kimberly\");");
+	ScavTrap bob("Bob");
+	format_msg(NULL, "ScavTrap bob(\"Bob\");");
 
-	tory.setAttackDamage(20);
-	tory.setEnergyPoints(100);
-	tory.setHitPoints(100);
-	kimberly.setAttackDamage(20);
-	kimberly.setEnergyPoints(100);
-	kimberly.setHitPoints(100);
+	tory.setAttackDamage(10);
+	tory.setEnergyPoints(20);
+	tory.setHitPoints(60);
+	kimberly.setAttackDamage(10);
+	kimberly.setEnergyPoints(20);
+	kimberly.setHitPoints(60);
+
 	std::srand(std::time(0));
-	int	i = 1;
+	bob.guardGate();
 	while (true)
 	{
-		usleep(700000);
-		if (!kimberly.getHitPoints() || !tory.getHitPoints())
+		usleep(750000);
+		if ((!kimberly.getHitPoints() && !tory.getHitPoints()) || !bob.getHitPoints())
 			return (0);
-		int	turn = std::rand() % 100;
-		if (turn % i != 0)
-			defineTurnAction(tory, kimberly);
+		int	turn = std::rand() % 10 ;
+		if ((turn >= 1 && turn <= 3) || (turn >= 6 && turn <= 8))
+		{
+			if (tory.getEnergyPoints())
+				clapTurnAction(tory, bob);
+			if (kimberly.getEnergyPoints())
+				clapTurnAction(kimberly, bob);
+		}
 		else
-			defineTurnAction(kimberly, tory);
-		i++;
+			scavTurnAction(bob, kimberly, tory);
 	}
 	return (0);
 }
+
 
 int (*select_test(int i))(){
 	int	(*function[4])() = {
 		test00,
 		test01,
+		test02,
 		};
 	return (function[i]);
 }
@@ -154,14 +206,43 @@ static void turn_msg(const std::string name)
 		<< RESET;
 }
 
-static void defineTurnAction(ClapTrap & active, ClapTrap & passive)
+static void clapTurnAction(ClapTrap & active, ClapTrap & passive)
 {
+	if (!passive.getHitPoints() || !active.getHitPoints())
+		return ;
 	turn_msg(active.getName());
-	if (active.getHitPoints() < 50 && passive.getHitPoints() > 50)
+	if (active.getHitPoints() < 30 )
 		active.beRepaired(10);
 	else
 	{
 		active.attack(passive.getName());
 		passive.takeDamage(active.getAttackDamage());
+	}
+}
+
+static void scavTurnAction(ScavTrap & scav, ClapTrap & passive1, ClapTrap & passive2)
+{
+	std::srand(std::time(0));
+	int	turn = std::rand() % 10;
+
+	if (scav.getHitPoints() <= 20)
+		scav.beRepaired(10);
+	if (turn % 2 == 0)
+	{
+		if (passive1.getHitPoints())
+		{
+			turn_msg(scav.getName());
+			scav.attack(passive1.getName());
+			passive1.takeDamage(scav.getAttackDamage());
+		}
+	}
+	else
+	{
+		if (passive2.getHitPoints())
+		{
+			turn_msg(scav.getName());
+			scav.attack(passive2.getName());
+			passive2.takeDamage(scav.getAttackDamage());
+		}
 	}
 }
