@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Test03.cpp                                         :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/11 16:33:45 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/09/11 12:50:57 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/09/11 15:58:41 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.hpp"
-#include "AMateria.hpp"
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
-int test03(){
-	msgTest(" Test ");
-	
-	msg_("   ", 1);
-	msg_("   ", 2);
+#include <iostream>
 
-	return (0);
-}
+class AMateria;
+
+class ICharacter
+{
+	public:
+		virtual ~ICharacter() {}
+		virtual std::string const & getName() const = 0;
+		virtual void equip(AMateria* m) = 0;
+		virtual void unequip(int idx) = 0;
+		virtual void use(int idx, ICharacter& target) = 0;
+};
+
+#endif

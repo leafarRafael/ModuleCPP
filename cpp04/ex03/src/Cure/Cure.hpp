@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:22:32 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/11 08:25:24 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/11 16:15:04 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 
 #include "AMateria.hpp"
 
-#define CURE "\033[32mCure\033[0m"
+#define CURE "\033[32mcure\033[0m"
+
+class ICharacter;
 
 class Cure:public AMateria
 {
+	public:
+		~Cure();
+		Cure();
+		Cure(const Cure & origin);
+		Cure&operator=(const Cure & origin);
 	
+		AMateria* clone() const;
+		void use(ICharacter& target);
 };
 
 

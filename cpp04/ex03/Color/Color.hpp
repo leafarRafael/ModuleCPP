@@ -6,12 +6,14 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 14:49:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/10 13:40:07 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/11 17:39:23 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_HPP
  #define COLOR_HPP
+
+#include <iostream>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"
@@ -26,9 +28,6 @@
 #define ITALI	"\033[3m"
 #define BOLD    "\033[1m"
 #define SUBLI   "\033[4m"
-
-
-
 
 #define OK		" [\033[32mOK\033[0m] "
 #define FAILED	" [\033[31mFailed\033[0m] ";
