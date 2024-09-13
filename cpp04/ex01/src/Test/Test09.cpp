@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/10 17:44:42 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/12 17:11:50 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int test09(){
 	msg_("*ptr = *dog;", 2);
 	*ptr = *dog;
 
+
+	msg_("Adrr to Brain ", 1);
 	msg_("std::cout << ptr->getBrain();", 2);
 	std::cout << ptr->getBrain() << '\n';
 	msg_("std::cout << dog->getBrain()", 2);

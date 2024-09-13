@@ -6,44 +6,43 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:00:55 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/11 17:08:38 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/12 14:32:44 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Color.hpp"
 #include "ICharacter.hpp"
-
-static void msg(std::string msg);
+#include "Debug.hpp"
 
 //************************************************************************************
 //********************************* Orthodox Canonical class form ********************
 //************************************************************************************
 AMateria::~AMateria(){
-	msg("Destructor ");
+	Debug::msgOrthodox(6, BLUE, "Destructor ", RESET, AMATERIA, BLUE, " is called \n");
 }
 
 AMateria::AMateria():_type(AMATERIA){
-	msg("Constructor ");
+	Debug::msgOrthodox(6, BLUE, "Constructor default ", RESET, AMATERIA, BLUE, " is called \n");
 }
 
 AMateria::AMateria(std::string const & type):_type(type){
-	msg("Constructor with type ");
+	Debug::msgOrthodox(6, BLUE, "Constructor with type ", RESET, AMATERIA, BLUE, " is called \n");
 }
 
 AMateria::AMateria(const AMateria & origin){
-	msg("Copy constructor ");
+	Debug::msgOrthodox(6, BLUE, "Copy constructor ", RESET, AMATERIA, BLUE, " is called \n");
 	this->_type = origin._type;
 }
 
 AMateria &AMateria::operator=(const AMateria & origin){
 	if (this != &origin)
 	{
-		msg("Copy assignment constructor ");
+		Debug::msgOrthodox(6, BLUE, "Copy assignment ", RESET, AMATERIA, BLUE, " is called \n");
 		this->_type = origin._type;
 	}
 	else
-		msg("Copy constructor ");
+		Debug::msgOrthodox(6, BLUE, "Copy assignment ", RESET, AMATERIA, BLUE, " is called \n");
 	return (*this);
 }
 
@@ -59,16 +58,4 @@ void AMateria::use(ICharacter& target){
 	<< " * He tried to do something against the "
 	<< target.getName()
 	<< " but failed miserably *\n";
-}
-
-//************************************************************************************
-//********************************* Helper Function **********************************
-//************************************************************************************
-static void msg(std::string msg)
-{
-	std::cout
-		<< BLUE << msg << RESET
-		<< AMATERIA
-		<< BLUE << " is called" << RESET
-		<< std::endl;
 }

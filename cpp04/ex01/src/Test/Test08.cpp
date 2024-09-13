@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/10 17:42:33 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/12 17:15:58 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ int test08(){
 	Cat *ptr = new Cat();
 	msg_("*ptr = *cat;", 2);
 	*ptr = *cat;
-	std::cout << ptr << '\n' << cat << '\n';
+
+	msg_("Adrr to Brain ", 1);
+	msg_("std::cout << ptr->getBrain();", 2);
+	std::cout << ptr->getBrain() << '\n';
+	msg_("std::cout << cat->getBrain()", 2);
+	std::cout << cat->getBrain() << '\n';
 
 
 	delete cat;

@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:22:32 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/11 16:15:04 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/11 21:18:16 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "AMateria.hpp"
 
-#define CURE "\033[32mcure\033[0m"
+#define CURE "cure"
 
 class ICharacter;
 

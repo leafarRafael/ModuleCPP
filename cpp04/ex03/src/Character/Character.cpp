@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:59:26 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/11 18:24:16 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/12 16:32:38 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include "Color.hpp"
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
-
-static void msg(std::string msg);
-static void msgError(std::string msg, std::string color, std::string format);
+#include <iostream>
+#include "Debug.hpp"
 
 //************************************************************************************
 //******************************* Override methods ICharacter*************************
@@ -24,56 +23,84 @@ static void msgError(std::string msg, std::string color, std::string format);
 void Character::equip(AMateria* m){
 	if (!m)
 	{
-		msgError("Invalid parameter!", RED, ITALI);
+		Debug::msgOrthodox(3, RED, ITALI, "Inventory is full!\n");
 		return ;
 	}
-	for (int i = 0; i < MAX_MATERIA ;i++)
+	for (int i = 0; i < MAX_SLOT_INVENTORY ;i++)
 	{
-		if (!this->_materia[i])
+		if (!this->_inventory[i])
 		{
-			this->_materia[i] = m;
-			msgError("Equipped!" + this->_materia[i]->getType() + " material!", BLUE, ITALI);
+			this->_inventory[i] = m;
+			std::string color = GREEN;
+			if (m->getType() == "ice")
+				color = CYAN;
+			Debug::msgOrthodox(5, color.c_str(), ITALI, "Equipped ",
+				this->_inventory[i]->getType().c_str(),	" material!\n");
 			return ;
 		}	
 	}
-	msgError("Inventory is full!", RED, ITALI);
+	int ifDelete = 1;
+	for (int i = 0; i < MAX_SLOT_INVENTORY; i++)
+	{
+		if (m == this->_inventory[i])
+			ifDelete = 1;
+	}
+	if (ifDelete)
+		delete m;
+	Debug::msgOrthodox(3, RED, ITALI, "Inventory is full!\n");
 }
 
 void Character::unequip(int idx){
 	if (idx < 0)
 	{
-		msgError("haha the funny man wants to convey a negative value", RED, ITALI);
+		Debug::msgOrthodox(3, RED, ITALI, "haha the funny man wants to convey a negative value\n");
 		return ;
 	}
 	if (idx > 3)
 	{
-		msgError("I think I need more pockets...", RED, ITALI);
+		Debug::msgOrthodox(3, RED, ITALI, "I think I need more pockets...\n");
 		return ;		
 	}
-	if (!this->_materia[idx])
-		msgError("Space is already empty", RED, ITALI);
-	if (this->_materia[idx])
-		this->_materia[idx] = NULL;
-	msgError("Materia " + this->_materia[idx]->getType() + " unequip", BLUE, RESET);
+	if (!this->_inventory[idx])
+	{
+		Debug::msgOrthodox(3, RED, ITALI, "Space is already empty!\n");
+		return ;
+	}
+	Debug::msgOrthodox(5, BLUE, ITALI, "Materia ",
+		 this->_inventory[idx]->getType().c_str()," unequip!\n");
+	if (this->_inventory[idx])
+		this->_inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target){
 	if (idx < 0)
 	{
-		msgError("haha the funny man wants to convey a negative value", RED, ITALI);
+		Debug::msgOrthodox(3, RED, ITALI, "haha the funny man wants to convey a negative value\n");
 		return ;
 	}
 	if (idx > 3)
 	{
-		msgError("I think I need more pockets...", RED, ITALI);
+		Debug::msgOrthodox(3, RED, ITALI, "I think I need more pockets...\n");
 		return ;		
 	}
-	if (this->_materia[idx])
-		this->_materia[idx]->use(target);
+	if (this->_inventory[idx])
+		this->_inventory[idx]->use(target);
 }
 
 std::string const & Character::getName() const{
 	return (this->_name);
+}
+
+void	Character::setName(std::string name){
+	this->_name = name;
+}
+
+void	Character::showInventory(){
+	for (int i = 0; i < MAX_SLOT_INVENTORY; i++)
+	{
+		if (this->_inventory[i])
+			std::cout << this->_inventory[i]->getType() << '\n';
+	}
 }
 
 //************************************************************************************
@@ -81,21 +108,21 @@ std::string const & Character::getName() const{
 //************************************************************************************
 Character::~Character(){
 	this->_destroyMateria();
-	msg("Destructor ");
+	Debug::msgOrthodox(6, BLUE, "Destructor ", RESET, CHARACTER, BLUE, " is called \n");;
 }
 
 Character::Character():_name(""){
 	this->_initMateria();
-	msg("Contructor ");
+	Debug::msgOrthodox(6, BLUE, "Constructor default ", RESET, CHARACTER, BLUE, " is called \n");
 }
 
 Character::Character(std::string name):_name(name){
-	msg("Constructor with name ");
+	Debug::msgOrthodox(6, BLUE, "Constructor with name", RESET, CHARACTER, BLUE, " is called \n");;
 	this->_initMateria();
 }
 
 Character::Character(const Character & origin){
-	msg("Constructor with name ");
+	Debug::msgOrthodox(6, BLUE, "Copy constructor ", RESET, CHARACTER, BLUE, " is called \n");
 	this->_initMateria();
 	this->_copyMateria(origin);
 }
@@ -103,48 +130,43 @@ Character::Character(const Character & origin){
 Character &Character::operator=(const Character & origin){
 	if (this != &origin)
 	{
+		Debug::msgOrthodox(6, BLUE, "Copy assignment ", RESET, CHARACTER, BLUE, " is called \n");
 		this->_destroyMateria();
 		this->_initMateria();
 		this->_copyMateria(origin);
 	}
+	else
+		Debug::msgOrthodox(6, BLUE, "Copy assignment ", RESET, CHARACTER, BLUE, " is called \n");
 	return (*this);
 }
 
 //************************************************************************************
 //********************************* Helper Function **********************************
 //************************************************************************************
-static void msg(std::string msg)
-{
-	std::cout
-		<< BLUE << msg << RESET
-		<< CHARACTER
-		<< BLUE << " is called" << RESET
-		<< std::endl;
-}
-
-static void msgError(std::string msg, std::string color, std::string format)
-{
-	std::cout << format + color + msg + RESET	<< std::endl;
-}
-
-
 void	Character::_initMateria(){
-	for(int i = 0; i < MAX_MATERIA; i++)
-		this->_materia[i] = NULL;
+	for(int i = 0; i < MAX_SLOT_INVENTORY; i++)
+		this->_inventory[i] = NULL;
 }
 
 void	Character::_destroyMateria(){
-	for(int i = 0; i < MAX_MATERIA; i++)
+	for(int i = 0; i < MAX_SLOT_INVENTORY; i++)
 	{
-		if (this->_materia[i])
-			delete this->_materia[i];
+		if (this->_inventory[i])
+		{
+			for (int x = i+1; x < MAX_SLOT_INVENTORY; x++)
+			{
+				if (this->_inventory[i] == this->_inventory[x])
+					this->_inventory[x] = NULL;
+			}
+			delete this->_inventory[i];
+		}
 	}
 }
 
 void	Character::_copyMateria(const Character & origin){
-	for(int i = 0; i < MAX_MATERIA; i++)
+	for(int i = 0; i < MAX_SLOT_INVENTORY; i++)
 	{
-		if (origin._materia[i])
-			this->_materia[i] = origin._materia[i]->clone();
+		if (origin._inventory[i])
+			this->_inventory[i] = origin._inventory[i]->clone();
 	}
 }

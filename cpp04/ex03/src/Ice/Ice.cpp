@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:30:15 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/11 16:40:42 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/12 14:38:44 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 #include <iostream>
 #include "Color.hpp"
 #include "ICharacter.hpp"
-
-static void msg(std::string msg);
+#include "Debug.hpp"
 
 //************************************************************************************
 //********************************* Orthodox Canonical class form ********************
 //************************************************************************************
 Ice::~Ice(){
-	msg("Destructor ");
+	Debug::msgOrthodox(6, BLUE, "Destructor ", RESET, ICE, BLUE, " is called \n");
 }
 
-Ice::Ice():AMateria(ICE){
-	msg("Constructor ");
+Ice::Ice():AMateria(){
+	Debug::msgOrthodox(6, BLUE, "Constructor default ", RESET, ICE, BLUE, " is called \n");
+	this->_type = ICE;
 }
 
 Ice::Ice(const Ice & origin):AMateria(origin){
-	msg("Copy constructor ");
+	Debug::msgOrthodox(6, BLUE, "Copy constructor ", RESET, ICE, BLUE, " is called \n");
 	this->_type = ICE;
 }
 
@@ -37,11 +37,11 @@ Ice &Ice::operator=(const Ice & origin){
 	if (this != &origin)
 	{
 		AMateria::operator=(origin);
-		msg("Copy constructor ");
+		Debug::msgOrthodox(6, BLUE, "Copy assignment ", RESET, ICE, BLUE, " is called \n");
 		this->_type = ICE;
 	}
 	else 
-		msg("Copy constructor ");
+		Debug::msgOrthodox(6, BLUE, "Copy assignment ", RESET, ICE, BLUE, " is called \n");
 	return (*this);
 }
 
@@ -49,23 +49,11 @@ Ice &Ice::operator=(const Ice & origin){
 //******************************* Override methods AMateria ****************************
 //**************************************************************************************
 AMateria* Ice::clone() const{
-	msg("Clone ");
+	Debug::msgOrthodox(6, BLUE, "Clone ", RESET, ICE, BLUE, " is called \n");;
 	AMateria *newIceAMateria = new Ice();
 	return (newIceAMateria);
 }
 
 void Ice::use(ICharacter& target){
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << '\n' ;
-}
-
-//************************************************************************************
-//********************************* Helper Function **********************************
-//************************************************************************************
-static void msg(std::string msg)
-{
-	std::cout
-		<< BLUE << msg << RESET
-		<< ICE
-		<< BLUE << " is called" << RESET
-		<< std::endl;
 }

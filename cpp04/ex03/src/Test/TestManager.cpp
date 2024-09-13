@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:51:23 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/10 17:53:34 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/12 16:56:36 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,8 @@
 int (*select_test(int i))();
 
 int	testManager(){
-	int 		value_status;
-	std::string	msg_status;
-
 	for(int i = 0; i < NBR_TEST; i++)
-	{
-		value_status = 0;
-		msg_status = OK;
-		value_status = (*select_test(i))();
-		if (value_status)
-			msg_status = FAILED;
-		std::cout << STATUS << msg_status;
-	}
+		(*select_test(i))();
 	std::cout << std::endl;
 	return 0;
 }

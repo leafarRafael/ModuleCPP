@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:58:11 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/11 17:21:48 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/12 16:01:10 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 #include "AMateria.hpp"
 
 #define CHARACTER "\033[32mCharacter\033[0m"
-#define MAX_MATERIA 4
+#define MAX_SLOT_INVENTORY 4
 
 class Character : public ICharacter
 {
 	private:
-		AMateria*	_materia[4];
+		AMateria*	_inventory[4];
 		std::string	_name;
 
 	// Helper methods
@@ -32,14 +32,16 @@ class Character : public ICharacter
 		void	_copyMateria(const Character & origin);
 
 	public: 
-	// Constructor, destructor, copy and assignment 
+	// Constructor, destructor, copy and copy assignment 
 		~Character();
 		Character();
 		Character(std::string name);
 		Character(const Character & origin);
 		Character&operator=(const Character & origin);
+		void	setName(std::string name);
+		void	showInventory();
 
-	// override interface ICharacter
+	// Override interface ICharacter
 		std::string const & getName() const;
 		void equip(AMateria* m);
 		void unequip(int idx);

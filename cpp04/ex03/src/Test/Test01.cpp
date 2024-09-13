@@ -6,49 +6,42 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/11 12:47:08 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:26:26 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.hpp"
 #include "Ice.hpp"
-
-static void methodsGetType(std::string callObjsct, std::string type);
+#include "AMateria.hpp"
 
 int test01(){
-	msgTest(" Test Methods Ortodox class Ice");
-	
-	msg_("Intances of Ice class", 1);
-	msg_("AMateria *defalConstru = new Ice();", 2);
-	AMateria *defalConstru = new Ice();
-	msg_("AMateria *cpyContruct = new Ice(static_cast<Ice&>(*defalConstru));", 2);
-	AMateria *cpyContruct = new Ice(static_cast<Ice&>(*defalConstru));
-	msg_("AMateria *cpyAssignment = new Ice();", 2);
-	AMateria *cpyAssignment = new Ice();
-	msg_("static_cast<Ice&>(*cpyAssignment) = static_cast<Ice&>(*cpyContruct);", 2);
-	static_cast<Ice&>(*cpyAssignment) = static_cast<Ice&>(*cpyContruct);
+	msgTest(" Test AMateria Ice ");
 
-	msg_("Methods getType()", 1);
-	methodsGetType("defalConstru->getType()", defalConstru->getType());
-	methodsGetType("cpyContruct->getType()", cpyContruct->getType());
-	methodsGetType("cpyAssignment->getType()", cpyAssignment->getType());
-	
-	msg_("Methods clone()", 1);
-	msg_("AMateria *ptr;", 2);
-	AMateria *ptr;
-	std::cout << "ptr = defalConstru->clone();"  << '\n';
-	ptr = defalConstru->clone();
+	Debug::msg(5, YELLOW, ITALI, SUBLI, BOLD, "\n   Instances constructor default Ice:\n");
+	Debug::msg(3, ITALI, CYAN ,"Ice *ice = new Ice();\n");
+	Ice *ice = new Ice();
 
-	msg_("Destructor call", 1);
-	delete defalConstru;
-	delete cpyContruct;
-	delete cpyAssignment;
-	delete ptr;
+	Debug::msg(5, YELLOW, ITALI, SUBLI, BOLD, "\n   Instances copy constructor Ice:\n");
+	Debug::msg(3, ITALI, CYAN ,"AMateria *ptrAmateria = new Ice();\n");
+	AMateria *ptrAmateria = new Ice(*ice);
+
+	Debug::msg(5, YELLOW, ITALI, SUBLI, BOLD, "\n   Instances copy assingment Ice:\n");
+	Debug::msg(3, ITALI, CYAN ,"Ice *ptrIce = new Ice();\n");
+	Ice *ptrIce = new Ice();
+	Debug::msg(3, ITALI, CYAN ,"ptrIce = ice;\n");
+	*ptrIce = *ice;
+
+	Debug::msg(5, YELLOW, ITALI, SUBLI, BOLD, "\n   clone() Ice:\n");
+	Debug::msg(3, ITALI, CYAN ,"Ice *clone = ptrAmateria->clone();\n");
+	AMateria *clone = ptrAmateria->clone();
+
+	Debug::msg(5, YELLOW, ITALI, SUBLI, BOLD, "\n   getType() Ice:\n");
+	Debug::msg(4, ITALI, CYAN , "clone->getType() = ", clone->getType().c_str());
+
+	Debug::msg(5, YELLOW, ITALI, SUBLI, BOLD, "\n\n   Destructor Ice:\n");
+	delete ptrAmateria;
+	delete ptrIce;
+	delete ice;
+	delete clone;
 	return (0);
-	return (0);
-}
-
-static void methodsGetType(std::string callObjsct, std::string type)
-{
-	std::cout << callObjsct << " = " << type << '\n';
 }
