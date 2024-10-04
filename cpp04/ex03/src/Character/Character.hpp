@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:58:11 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/12 16:01:10 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/09/15 16:50:17 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class Character : public ICharacter
 
 	public: 
 	// Constructor, destructor, copy and copy assignment 
+		std::string const & getName() const;
 		~Character();
 		Character();
 		Character(std::string name);
@@ -42,7 +43,6 @@ class Character : public ICharacter
 		void	showInventory();
 
 	// Override interface ICharacter
-		std::string const & getName() const;
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);

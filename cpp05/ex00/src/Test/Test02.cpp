@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Test02.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/09/15 16:48:48 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/04 17:29:37 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "TestManager.hpp"
-#include <string>
+#include "test.hpp"
+#include "Bureaucrat.hpp"
 #include "Debug.hpp"
-#include "Character.hpp"
 
-int	main()
-{
+int	test02(){
+	msgTest(" Test 02 ");
 
-	std::cout << sizeof(Character);
-/* 	if (argc > 1)
-	{
-		std::string arg = argv[1];
-		if (arg == "DEBUG")
-			Debug::stop = 1;
+	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n   Grid value = 0, expectation that generates exception:\n");
+	try{
+		Debug::msg(1, ITALI SUBLI CYAN "\n    Bureucrat A(\"Hermes Conrad A\", 0);\n");
+		Bureucrat A("Hermes Conrad A", 0);
+		std::cout << A << '\n';
 	}
-	testManager(); */
-	return 0;
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << '\n';
+		return 0;	
+	}
+	return (1);
 }
