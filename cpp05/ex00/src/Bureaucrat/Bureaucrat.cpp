@@ -5,97 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 18:44:39 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/04 18:15:26 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/06 14:58:59 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/07 11:25:08 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Color.hpp"
-#include "Debug.hpp"
 #include "Bureaucrat.hpp"
-#include <string>
+#include "Debug.hpp"
+#include "Color.hpp"
 
 //************************************************************************************
 //********************************* Orthodox Canonical class form ********************
 //************************************************************************************
-
-Bureucrat::~Bureucrat(){
-	Debug::msgOrthodox(1, BLUE "Destructor is called \n");
+Bureaucrat::~Bureaucrat(){
+	Debug::msgOrthodox(1, BLUE "Destructor Bureaucrat is called.\n");
 }
 
-Bureucrat::Bureucrat():_name("Object defult"),_grade(LOWEST_GRADE){
-	Debug::msgOrthodox(1, BLUE "Constructor default is called \n");
+Bureaucrat::Bureaucrat():_name("Constructor default Bureaucrat"), _grade(150){
+	Debug::msgOrthodox(1, BLUE "Constructor default Bureaucrat is called.\n");
 }
 
-Bureucrat::Bureucrat(std::string const name, int grade):_name(name){
-	Debug::msgOrthodox(1, BLUE "Constructor with name and grade is called \n");
-	if (grade < HIGHEST_GRADE)
-		throw (Bureucrat::GradeTooHighException());
-	if (grade > LOWEST_GRADE)
-		throw (Bureucrat::GradeTooLowException());
-	this->_grade = grade;
+Bureaucrat::Bureaucrat(std::string name, int grade):_name(name), _grade(grade){
+	Debug::msgOrthodox(1, BLUE "Constructor Bureaucrat with parameters is called.\n");
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 }
 
-Bureucrat::Bureucrat(Bureucrat const &origin):_name(origin.getName()){
-	Debug::msgOrthodox(1, BLUE "Copy constructor is called \n");
-	this->_grade = origin.getGrade();
+Bureaucrat::Bureaucrat(Bureaucrat const &burr):_name(burr.getName()), _grade(burr.getGrade()){
+	Debug::msgOrthodox(1, BLUE "Copy constructor Bureaucrat is called.\n");
 }
 
-Bureucrat &Bureucrat::operator=(Bureucrat const & origin){
-	if (this != &origin){
-		this->_grade = origin.getGrade();
-	}
-	Debug::msgOrthodox(1, BLUE "Copy assignment is called \n");
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &burr){
+	if (this != &burr)
+		this->_grade = burr.getGrade();
+	Debug::msgOrthodox(1, BLUE "Copy assignment Bureaucrat is called \n");
 	return *this;
 }
 
 //************************************************************************************
 //********************************* Methods geters ***********************************
 //************************************************************************************
-
-const std::string & Bureucrat::getName() const{
-	return _name;
+const std::string	&Bureaucrat::getName() const{
+	return (this->_name);
 }
 
-int			Bureucrat::getGrade() const{
-	return _grade;
+int					Bureaucrat::getGrade() const{
+	return (this->_grade);
 }
 
-//************************************************************************************
-//********************************* Overload of the insertion («) ********************
-//************************************************************************************
+void				Bureaucrat::incrementGrade(){
+	if ((this->_grade +1) > 150)
+		throw Bureaucrat::GradeTooLowException();
+	this->_grade++;
+}
 
-std::ostream &operator<<(std::ostream & os, const Bureucrat & burr){
-	os << burr.getName() << ", bureucrat grade [" << burr.getGrade() << ']' << '\n';
-	return (os);
+void				Bureaucrat::decrementGrade(){
+	if ((this->_grade - 1 ) < 1)
+		throw Bureaucrat::GradeTooHighException(); 
+	this->_grade--;
 }
 
 
 //************************************************************************************
 //********************************* Overload exception *******************************
 //************************************************************************************
-
-const char *Bureucrat::GradeTooHighException::what() const throw(){
-	return (RED "Grade too high exception\n" RESET);
+const char *Bureaucrat::BureaucratException::what() const throw(){
+	return (RED ITALI SUBLI "Default exception.\n" RESET);
 }
 
-const char *Bureucrat::GradeTooLowException::what() const throw(){
-	return (RED "Grade too low exception\n" RESET);	
+const char *Bureaucrat::GradeTooHighException::what() const throw(){
+	return (RED ITALI SUBLI "Grade too high exception.\n" RESET);
 }
 
+const char *Bureaucrat::GradeTooLowException::what() const throw(){
+	return (RED ITALI SUBLI "Grade too Low exception.\n" RESET);
+}
 
 //************************************************************************************
-//********************************* Methods increment decrement **********************
+//********************************* Overload of the insertion («) ********************
 //************************************************************************************
-
-void	Bureucrat::increment(){
-	if ((_grade - 1) < HIGHEST_GRADE)
-		throw (Bureucrat::GradeTooHighException());
-	this->_grade--;
-}
-
-void	Bureucrat::decrement(){
-	if ((_grade + 1) > LOWEST_GRADE)
-		throw (Bureucrat::GradeTooLowException());
-	this->_grade++;
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &burr){
+	os << "Name: " RED ITALI SUBLI BOLD << burr.getName() << "\n" RESET
+		<< "Grade: " RED ITALI BOLD << burr.getGrade() << "\n" RESET;
+	return (os);
 }

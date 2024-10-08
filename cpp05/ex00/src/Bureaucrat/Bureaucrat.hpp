@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 18:29:14 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/04 18:15:11 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/06 14:47:15 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/07 08:54:05 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,38 @@
 
 #include <string>
 #include <ostream>
-#define HIGHEST_GRADE 1
-#define LOWEST_GRADE 150
 
-class Bureucrat{
+class Bureaucrat{
 	private:
-		const std::string	_name;	
+		const std::string	_name;
 		int					_grade;
-
+	
 	public:
-		~Bureucrat();
-		Bureucrat();
-		Bureucrat(std::string const name, int grade);
-		Bureucrat(Bureucrat const &origin);
-		Bureucrat &operator=(Bureucrat const  &origin);		
+		~Bureaucrat();
+		Bureaucrat();
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(Bureaucrat const &burr);
+		Bureaucrat&operator=(Bureaucrat const &burr);
+
 		const std::string	&getName() const;
 		int					getGrade() const;
-		void				increment();
-		void				decrement();
+		void				incrementGrade();
+		void				decrementGrade();
 
-
-	class GradeTooHighException : public std::exception{
-		public:
-			virtual const char *what() const throw();
-	};
-	class GradeTooLowException : public std::exception{
-		public:
-			virtual const char *what() const throw();
-	};
+		class BureaucratException:public std::exception{
+			public:
+				virtual const char *what() const throw();
+		};
+		class GradeTooHighException:public BureaucratException{
+			public:
+				virtual const char *what() const throw();
+		};
+		class GradeTooLowException:public BureaucratException{
+			public:
+				virtual const char *what() const throw();
+		};
 };
 
-std::ostream &operator<<(std::ostream & os, const Bureucrat & burr);
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &burr);
 
 #endif
