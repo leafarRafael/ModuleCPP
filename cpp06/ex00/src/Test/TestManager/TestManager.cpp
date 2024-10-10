@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:51:23 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/09 20:59:02 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/10 08:42:17 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int		getOptions(std::string option){
 	char	valid[3] = {'E', 'A', 'X'};
 
 	if (option.length() != 1)
-		return 4;
+		return 3;
 	for (int i = 0; i < 3; i++){
 		if (std::toupper(option[0]) == valid[i])
 			return i;
