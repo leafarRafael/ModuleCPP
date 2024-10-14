@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:12:18 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 10:09:57 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 13:06:26 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	ToFloat::validateNumberFormat(std::string input){
 	u_int	hasSignPrefix = 0;
 
 	setPrecision(input);
-
 	if (input[0] == '-' || input[0] == '+')
 		hasSignPrefix = 1;
 	for (u_int i = hasSignPrefix; i < input.length(); i++){
@@ -102,11 +101,9 @@ void	ToFloat::setPrecision(std::string input){
 	decimalPointPosition = input.find(".");
 	if (decimalPointPosition == std::string::npos)
 		return ;
-	for (u_int i = decimalPointPosition+1; i < input.length(); i++){
-		if (input[i] == 'f')
-			break ;
-		_precision++;
-	}
+	_precision = input.length() - decimalPointPosition -1;
+	if (input[input.length()-1] == 'f')
+		_precision--;
 }
 
 void	ToFloat::displayConversion(long double input){

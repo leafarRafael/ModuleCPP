@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ToChar.hpp                                         :+:      :+:    :+:   */
+/*   Primitive.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:11:07 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 13:18:37 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 13:15:26 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOCHAR_HPP
-#define TOCHAR_HPP
+#ifndef PRIMITIVE_HPP
+#define PRIMITIVE_HPP
 
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <cstdlib>
 #include <cctype>
+#include "ScalarConverter.hpp"
 
-class ToChar{
-	private:
-		static void			displayConversion(long double input);
-		static void			validatePseudoLiterals(std::string input);
-		static void			validateNumberFormat(std::string input);
-		static void			validateEmptyInput(std::string input);
-		static long double	extractNumericValue(u_int indexSignalPositive, u_int length, std::string input);
-		static long	double	parseStringToLongDouble(std::string input);
-		static long double	handleSingleCharacterInput(long double doubleInput);
-		static long double	validateNumericString(std::string input);
-
+class Primitive{
 	public:
-		static void	convertStringToChar(std::string input);
+		void 			convertStringPrimitive(std::string input);
+		void			displayConversion(long double input);
+		void			validatePseudoLiterals(std::string input);
+		void			validateNumberFormat(std::string input);
+		void			validateEmptyInput(std::string input);
+		long double	extractNumericValue(u_int indexSignalPositive, u_int length, std::string input);
+		long double	parseStringToLongDouble(std::string input);
+		long double	handleSingleCharacterInput(long double doubleInput);
+		long double	validateNumericString(std::string input);
 	
-	class ToCharNonDisplayable:public std::exception{
+	class PrimitiveNonDisplayable:public std::exception{
 		public:
 			const char *what() const throw();
 	};
-	class ToCharImpossible:public std::exception{
+	class PrimitiveImpossible:public std::exception{
 		public:
 			const char *what() const throw();
 	};	

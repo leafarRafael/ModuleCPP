@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 14:58:59 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 10:04:03 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 12:24:40 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,9 @@ void ScalarConverter::convert(std::string input){
 
 ScalarConverter::ScalarConverter(){}
 ScalarConverter::~ScalarConverter(){}
+ScalarConverter::ScalarConverter(const ScalarConverter &ref){*this = ref;}
+ScalarConverter&ScalarConverter::operator=(const ScalarConverter &ref){
+	if (this != &ref)
+		*this = ref;
+	return *this;
+}

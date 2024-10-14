@@ -6,7 +6,7 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2024/10/14 10:02:02 by rbutzke          ###   ########.fr        #
+#    Updated: 2024/10/14 12:31:15 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ FILE_TOFLOAT			:= ToFloat.cpp
 FILE_TODOUBLE			:= ToDouble.cpp
 FILE_TEST_MANAGER		:= TestManager.cpp
 FILE_UNITTEST			:= UnitTest.cpp
-FILE_TEST				:= Test00.cpp\
+FILE_TEST				:= Test00.cpp Test01.cpp\
 
 #-----------------------------------------------------------------------------------------
 # Source files

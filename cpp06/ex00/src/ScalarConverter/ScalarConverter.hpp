@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 14:47:15 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/13 13:54:16 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 12:24:33 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@
 class ScalarConverter{
 	private:
 		ScalarConverter();
+		ScalarConverter(const ScalarConverter &ref);
+		ScalarConverter&operator=(const ScalarConverter &ref);
 		~ScalarConverter();
-		
-	protected:
-		static void	validInput(std::string input);
-
 	public:
 		static	void convert(std::string input);
 };
