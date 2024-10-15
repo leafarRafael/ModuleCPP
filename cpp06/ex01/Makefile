@@ -6,13 +6,13 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2024/10/14 16:05:10 by rbutzke          ###   ########.fr        #
+#    Updated: 2024/10/15 08:47:53 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-----------------------------------------------------------------------------------------
 # Static library
-NAME		:= ScalarConverter
+NAME		:= Serialization
 
 #-----------------------------------------------------------------------------------------
 # Compiler and flags
@@ -32,20 +32,17 @@ SRC_TEST_MANAGER	:= src/Test/TestManager/
 SRC_UNITTEST		:= src/Test/UnitTest/
 SRC_TEST_IMPLEMENTS	:= src/Test/TestImplementation/
 DEBUG				:= src/Debug/
-SRC_SCALAR			:= src/ScalarConverter/
-SRC_TOCHAR			:= src/ScalarConverter/ToChar/
-SRC_TOINT			:= src/ScalarConverter/ToInt/
-SRC_TOFLOAT			:= src/ScalarConverter/ToFloat/
-SRC_TODOUBLE		:= src/ScalarConverter/ToDouble/
+SRC_SERIALIZATION	:= src/Serialization/
+SRC_DATA			:= src/Data/
+SRC_OTHERDATA		:= src/OtherData/
+
 
 #-----------------------------------------------------------------------------------------
 # Header file includes
 INCLUDES			:= -I $(SRC)\
-					-I $(SRC_SCALAR)\
-					-I $(SRC_TOCHAR)\
-					-I $(SRC_TOINT)\
-					-I $(SRC_TOFLOAT)\
-					-I $(SRC_TODOUBLE)\
+					-I $(SRC_SERIALIZATION)\
+					-I $(SRC_DATA)\
+					-I $(SRC_OTHERDATA)\
 					-I $(COLOR)\
 					-I $(DEBUG)\
 					-I $(SRC_TEST_MANAGER)\
@@ -55,14 +52,12 @@ INCLUDES			:= -I $(SRC)\
 # Source files
 FILE_MAIN				:= main.cpp
 FILE_DEGUB				:= Debug.cpp
-FILE_SCALAR				:= ScalarConverter.cpp
-FILE_TOCHAR				:= ToChar.cpp
-FILE_TOINT				:= ToInt.cpp
-FILE_TOFLOAT			:= ToFloat.cpp
-FILE_TODOUBLE			:= ToDouble.cpp
+FILE_SERIALIZATION		:= Serialization.cpp
+FILE_DATA				:= Data.cpp
+FILE_OTHERDATA			:= OtherData.cpp
 FILE_TEST_MANAGER		:= TestManager.cpp
 FILE_UNITTEST			:= UnitTest.cpp
-FILE_TEST				:= Test00.cpp Test01.cpp Test02.cpp Test03.cpp Test04.cpp\
+FILE_TEST				:= Test00.cpp Test01.cpp Test02.cpp\
 
 #-----------------------------------------------------------------------------------------
 # Source files
@@ -71,13 +66,9 @@ SRC_FILES	:=  $(addprefix $(SRC), $(FILE_MAIN))\
 				$(addprefix $(SRC_TEST_MANAGER), $(FILE_TEST_MANAGER))\
 				$(addprefix $(SRC_UNITTEST), $(FILE_UNITTEST))\
 				$(addprefix $(SRC_TEST_IMPLEMENTS), $(FILE_TEST))\
-				$(addprefix $(SRC_SCALAR), $(FILE_SCALAR))\
-				$(addprefix $(SRC_TOCHAR), $(FILE_TOCHAR))\
-				$(addprefix $(SRC_TOINT), $(FILE_TOINT))\
-				$(addprefix $(SRC_TOFLOAT), $(FILE_TOFLOAT))\
-				$(addprefix $(SRC_TODOUBLE), $(FILE_TODOUBLE))\
-
-
+				$(addprefix $(SRC_SERIALIZATION), $(FILE_SERIALIZATION))\
+				$(addprefix $(SRC_DATA), $(FILE_DATA))\
+				$(addprefix $(SRC_OTHERDATA), $(FILE_OTHERDATA))\
 
 #-----------------------------------------------------------------------------------------
 # Directory for object files

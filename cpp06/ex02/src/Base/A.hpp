@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   UnitTest.hpp                                       :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 14:48:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 16:05:35 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/06 14:47:15 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/15 10:22:55 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNITTEST_HPP
-#define UNITTEST_HPP
-#include <string>
+#ifndef A_HPP
+#define A_HPP
 
-class UnitTest{
-	private:
-		static int totalTest;
-		UnitTest();
-
-	public:
-		static int	(*select_test(int i))();
-		static int	getTotalTest();
-};
-std::string	getInputTest();
-int			test00();
-int			test01();
-int			test02();
-int			test03();
-int			test04();
+#include "Base.hpp"
+class A:public Base{};
 
 #endif

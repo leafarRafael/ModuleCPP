@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:12:18 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 13:06:44 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:44:47 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,42 +45,28 @@ long double ToDouble::validatePseudoLiteral(std::string input){
 	return 0;
 }
 
+long	double	ToDouble::parseStringToLongDouble(std::string input){
+	if (input.length() == 1)
+		return handleSingleCharacterInput(static_cast<long double>(input[0]));
+	return converStringToDouble(input);
+}
+
+double ToDouble::converStringToDouble(std::string input){
+	double			doubleInput;
+	char				*end;
+
+	validateNumberFormat(input);
+	errno = 0;
+	doubleInput = std::strtod(input.c_str(), &end);;
+	if (errno == ERANGE || end == input)
+		throw ToDouble::ToDoubleImpossible();
+	return (doubleInput);
+}
+
 long double ToDouble::handleSingleCharacterInput(long double doubleInput){
 	if (isdigit(doubleInput))
 		return (doubleInput - '0');			
 	return (doubleInput);
-}
-
-long	double	ToDouble::parseStringToLongDouble(std::string input){
-	if (input.length() == 1)
-		return handleSingleCharacterInput(static_cast<long double>(input[0]));
-	return validateNumericString(input);
-}
-
-long double ToDouble::validateNumericString(std::string input){
-	u_int				hasSignPrefix;
-	std::size_t			decimalPointPosition;
-
-	validateNumberFormat(input);
-	decimalPointPosition = input.find(".");
-	hasSignPrefix = (input[0] == '-' || input[0] == '+') ? 1 : 0;
-	if (decimalPointPosition != std::string::npos)
-		return extractNumericValue(hasSignPrefix, decimalPointPosition, input);
-	return extractNumericValue(hasSignPrefix, input.length(), input);
-}
-
-
-long double	ToDouble::extractNumericValue(u_int hasSignPrefix, u_int length, std::string input){
-	std::stringstream	ss, sss(input);
-	long double			doubleInput;
-	
-	for (u_int i = hasSignPrefix; i < length; i++) {
-		if (!isdigit(input[i]))
-			throw ToDouble::ToDoubleImpossible();
-		ss << input[i];
-	}
-	sss >> doubleInput;
-	return (doubleInput = (input[0] == '-') ? (doubleInput *-1) : doubleInput);	
 }
 
 void	ToDouble::validateNumberFormat(std::string input){
@@ -90,7 +76,7 @@ void	ToDouble::validateNumberFormat(std::string input){
 	if (input[0] == '-' || input[0] == '+')
 		hasSignPrefix = 1;
 	for (u_int i = hasSignPrefix; i < input.length(); i++){
-		if (!isdigit(input[i]) && input[i] != '.' && input[i] != 'f')
+		if (!isdigit(input[i]) && input[i] != '.' && input[i] != 'f' && input[i] != 'e')
 			throw ToDouble::ToDoubleImpossible();
 	}
 }
@@ -119,4 +105,13 @@ const char *ToDouble::ToDoubleImpossible::what() const throw(){
 
 const char *ToDouble::ToDoubleNonDisplayable::what() const throw(){
 	return "Double: Non displayable.\n";
+}
+
+ToDouble::ToDouble(){}
+ToDouble::~ToDouble(){}
+ToDouble::ToDouble(const ToDouble &ref){*this = ref;}
+ToDouble&ToDouble::operator=(const ToDouble &ref){
+	if (this != &ref)
+		*this = ref;
+	return *this;
 }

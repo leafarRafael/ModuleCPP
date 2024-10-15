@@ -6,26 +6,51 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 16:06:40 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:05:00 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
 #include "Debug.hpp"
-#include <iomanip>
 #include <iostream>
 #include "UnitTest.hpp"
+#include "Functions.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+#include <unistd.h>
 
 int	test00(){
-	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n                   ScalarConvert   :\n");
-	Debug::msg(1, MAGENTA ITALI SUBLI BOLD "      Pseudo Literal:\n");
+	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n                            Data Types:\n");
 	Debug::stop = 0;
-	std::string test[6] = {"-inff", "+inff", "nanf", "-inf", "+inf", "nan",};
-
-	for(int i = 0; i < 6; i++){
-		std::cout << RED ITALI SUBLI BOLD "           Input: " RESET << test[i] << "\n" ;
-		ScalarConverter::convert(test[i]);
-		std::cout << "\n";
+	{
+		Base *base = generate();
+		identify(base);
+		delete base;
+	}
+	sleep(1);
+	{
+		Base *base = generate();
+		identify(base);
+		delete base;
+	}
+	sleep(1);
+	{
+		Base *base = generate();
+		identify(base);
+		delete base;
+	}
+	sleep(1);
+	{
+		Base *base = generate();
+		identify(*base);
+		delete base;
+	}
+	sleep(1);
+	{
+		Base *base = generate();
+		identify(*base);
+		delete base;
 	}
 	Debug::stop = 1;
 	return (0);

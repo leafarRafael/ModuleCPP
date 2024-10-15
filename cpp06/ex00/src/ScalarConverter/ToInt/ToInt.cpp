@@ -6,14 +6,14 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:12:18 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 10:44:31 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:45:28 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ToInt.hpp"
 
 void ToInt::convertStringToInt(std::string input){
-	long double	convert;
+	long	convert;
 
 	try{
 		validateEmptyInput(input);
@@ -40,49 +40,27 @@ void	ToInt::validatePseudoLiterals(std::string input){
 	}
 }
 
-long double ToInt::handleSingleCharacterInput(long double doubleInput){
+long	ToInt::parseStringToLongDouble(std::string input){
+	if (input.length() == 1)
+		return handleSingleCharacterInput(static_cast<long>(input[0]));
+	return converStringToDouble(input);
+}
+
+long ToInt::converStringToDouble(std::string input){
+	long 				intInput;
+	validateNumberFormat(input);
+
+	errno = 0;
+	intInput = std::atol(input.c_str());
+	if (errno == ERANGE)
+		throw ToInt::ToIntImpossible();
+	return checkRange(intInput);
+}
+
+long ToInt::handleSingleCharacterInput(long doubleInput){
 	if (isdigit(doubleInput))
 		return (doubleInput - '0');			
 	return (doubleInput);
-}
-
-long	double	ToInt::parseStringToLongDouble(std::string input){
-	if (input.length() == 1)
-		return handleSingleCharacterInput(static_cast<long double>(input[0]));
-	return validateNumericString(input);
-}
-
-long double ToInt::checkRange(long double doubleInput){
-	if (doubleInput < std::numeric_limits<int>::min())		
-		throw ToInt::ToIntNonDisplayable();
-	if (doubleInput > std::numeric_limits<int>::max())		
-		throw ToInt::ToIntNonDisplayable();
-	return (doubleInput);
-}
-
-long double ToInt::validateNumericString(std::string input){
-	u_int				hasSignPrefix;
-	std::size_t			decimalPointPosition;
-
-	validateNumberFormat(input);
-	decimalPointPosition = input.find(".");
-	hasSignPrefix = (input[0] == '-' || input[0] == '+') ? 1 : 0;
-	if (decimalPointPosition != std::string::npos)
-		return extractNumericValue(hasSignPrefix, decimalPointPosition, input);
-	return extractNumericValue(hasSignPrefix, input.length(), input);
-}
-
-long double	ToInt::extractNumericValue(u_int indexSignalPositive, u_int length, std::string input){
-	std::stringstream	ss;
-	long double			doubleInput;
-	
-	for (u_int i = indexSignalPositive; i < length; i++) {
-		if (!isdigit(input[i]))
-			throw ToInt::ToIntImpossible();
-		ss << input[i];
-	}
-	ss >> doubleInput;
-	return checkRange(doubleInput = (input[0] == '-') ? (doubleInput *-1) : doubleInput);	
 }
 
 void	ToInt::validateNumberFormat(std::string input){
@@ -96,7 +74,16 @@ void	ToInt::validateNumberFormat(std::string input){
 	}
 }
 
-void	ToInt::displayConversion(long double input){
+long ToInt::checkRange(long doubleInput){
+	if (doubleInput < std::numeric_limits<int>::min())		
+		throw ToInt::ToIntNonDisplayable();
+	if (doubleInput > std::numeric_limits<int>::max())		
+		throw ToInt::ToIntNonDisplayable();
+	return (doubleInput);
+}
+
+
+void	ToInt::displayConversion(long input){
 	std::cout << "Int: " << static_cast<int>(input) << '\n';
 }
 
@@ -106,4 +93,13 @@ const char *ToInt::ToIntImpossible::what() const throw(){
 
 const char *ToInt::ToIntNonDisplayable::what() const throw(){
 	return "Int: Non displayable.\n";
+}
+
+ToInt::ToInt(){}
+ToInt::~ToInt(){}
+ToInt::ToInt(const ToInt &ref){*this = ref;}
+ToInt&ToInt::operator=(const ToInt &ref){
+	if (this != &ref)
+		*this = ref;
+	return *this;
 }

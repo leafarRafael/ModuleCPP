@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:11:07 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 10:12:04 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:43:56 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,21 @@
 #include <limits>
 #include <cfloat>
 #include <iomanip>
+#include <cerrno>
 
 class ToFloat{
 	private:
-		static void			displayConversion(long double input);
-		static long double	validatePseudoLiteral(std::string input);
-		static void			validateNumberFormat(std::string input);
-		static void			validateEmptyInput(std::string input);
-		static long double	extractNumericValue(u_int indexSignalPositive, u_int length, std::string input);
-		static long	double	parseStringToLongDouble(std::string input);
-		static long double	handleSingleCharacterInput(long double doubleInput);
-		static long double	validateNumericString(std::string input);
+		ToFloat();
+		~ToFloat();
+		ToFloat(const ToFloat &ref);
+		ToFloat&operator=(const ToFloat &ref);
+		static void		displayConversion(float input);
+		static float	validatePseudoLiteral(std::string input);
+		static void		validateNumberFormat(std::string input);
+		static void		validateEmptyInput(std::string input);
+		static float	parseStringToLongDouble(std::string input);
+		static float	handleSingleCharacterInput(float doubleInput);
+		static float	converStringToDouble(std::string input);
 
 		static int 			_precision;
 		static void			setPrecision(std::string input);

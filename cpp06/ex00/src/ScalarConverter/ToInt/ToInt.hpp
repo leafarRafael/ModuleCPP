@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:11:07 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 10:15:36 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:44:17 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,22 @@
 #include <cstdlib>
 #include <cctype>
 #include <limits>
+#include <cerrno>
 
 class ToInt{
 	private:
-		static void			displayConversion(long double input);
-		static void			validatePseudoLiterals(std::string input);
-		static void			validateNumberFormat(std::string input);
-		static void			validateEmptyInput(std::string input);
-		static long double	extractNumericValue(u_int indexSignalPositive, u_int length, std::string input);
-		static long	double	parseStringToLongDouble(std::string input);
-		static long	double	handleSingleCharacterInput(long double doubleInput);
-		static long double	validateNumericString(std::string input);
-	
-		static long double	checkRange(long double doubleInput);
+		ToInt();
+		~ToInt();
+		ToInt(const ToInt &ref);
+		ToInt&operator=(const ToInt &ref);
+		static void	displayConversion(long input);
+		static void	validatePseudoLiterals(std::string input);
+		static void	validateNumberFormat(std::string input);
+		static void	validateEmptyInput(std::string input);
+		static long	parseStringToLongDouble(std::string input);
+		static long	handleSingleCharacterInput(long doubleInput);
+		static long	converStringToDouble(std::string input);
+		static long	checkRange(long doubleInput);
 
 	public:
 		static void	convertStringToInt(std::string input);

@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:52:49 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 16:05:25 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/15 10:02:45 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 #include "Color.hpp"
 #include "Debug.hpp"
 
-int UnitTest::totalTest = 5;
+int UnitTest::totalTest = 1;
 
 int	(*UnitTest::select_test(int i))(){
 	int	(*function[8])() = {
 		test00,
-		test01,
-		test02,
-		test03,
-		test04,
 		};
 	return (function[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:11:07 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 13:18:37 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:43:18 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,21 @@
 #include <string>
 #include <cstdlib>
 #include <cctype>
+#include <cerrno>
 
 class ToChar{
 	private:
-		static void			displayConversion(long double input);
-		static void			validatePseudoLiterals(std::string input);
-		static void			validateNumberFormat(std::string input);
-		static void			validateEmptyInput(std::string input);
-		static long double	extractNumericValue(u_int indexSignalPositive, u_int length, std::string input);
-		static long	double	parseStringToLongDouble(std::string input);
-		static long double	handleSingleCharacterInput(long double doubleInput);
-		static long double	validateNumericString(std::string input);
+		ToChar();
+		~ToChar();
+		ToChar(const ToChar &ref);
+		ToChar&operator=(const ToChar &ref);
+		static void	displayConversion(int input);
+		static void	validatePseudoLiterals(std::string input);
+		static void	validateNumberFormat(std::string input);
+		static void	validateEmptyInput(std::string input);
+		static int	parseStringToLongDouble(std::string input);
+		static int	handleSingleCharacterInput(int doubleInput);
+		static int	converStringToDouble(std::string input);
 
 	public:
 		static void	convertStringToChar(std::string input);

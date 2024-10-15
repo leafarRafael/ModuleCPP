@@ -6,14 +6,14 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:12:18 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 12:24:24 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:42:44 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ToChar.hpp"
 
 void ToChar::convertStringToChar(std::string input){
-	long double	convert;
+	int	convert;
 
 	try{
 		validateEmptyInput(input);
@@ -40,13 +40,26 @@ void	ToChar::validatePseudoLiterals(std::string input){
 	}
 }
 
-long	double	ToChar::parseStringToLongDouble(std::string input){
+int	ToChar::parseStringToLongDouble(std::string input){
 	if (input.length() == 1)
-		return handleSingleCharacterInput(static_cast<long double>(input[0]));
-	return validateNumericString(input);
+		return handleSingleCharacterInput(static_cast<int>(input[0]));
+	return converStringToDouble(input);
 }
 
-long double ToChar::handleSingleCharacterInput(long double numericValue){
+int ToChar::converStringToDouble(std::string input){
+	int					numericValue;
+
+	if (input[0] == '-')
+		throw ToChar::ToCharImpossible();
+	validateNumberFormat(input);
+	errno = 0;
+	numericValue = std::atoi(input.c_str());
+	if (errno == ERANGE)
+		throw ToChar::ToCharImpossible();
+	return handleSingleCharacterInput(numericValue);;
+}
+
+int ToChar::handleSingleCharacterInput(int numericValue){
 	if (!isascii(numericValue))
 		throw ToChar::ToCharImpossible();
 	if (isdigit(numericValue))
@@ -58,22 +71,9 @@ long double ToChar::handleSingleCharacterInput(long double numericValue){
 	return (0);
 }
 
-long double ToChar::validateNumericString(std::string input){
-	u_int				isPositiveSign;
-	std::size_t			find;
-
-	if (input[0] == '-')
-		throw ToChar::ToCharImpossible();
-	validateNumberFormat(input);
-	find = input.find(".");
-	isPositiveSign = (input[0] == '+') ? 1 : 0;
-	if (find != std::string::npos)
-		return extractNumericValue(isPositiveSign, find, input);
-	return extractNumericValue(isPositiveSign, input.length(), input);
-}
-
 void	ToChar::validateNumberFormat(std::string input){
 	u_int	isPositiveSign = 0;
+
 	if (input[0] == '+')
 		isPositiveSign = 1;
 	for (u_int i = isPositiveSign; i < input.length(); i++){
@@ -82,20 +82,7 @@ void	ToChar::validateNumberFormat(std::string input){
 	}
 }
 
-long double	ToChar::extractNumericValue(u_int indexSignalPositive, u_int length, std::string input){
-	std::stringstream	ss;
-	long double			numericValue;
-
-	for (u_int i = indexSignalPositive; i < length; i++) {
-		if (!isdigit(input[i]) && input[i] != '.' && input[i] != 'f')
-			throw ToChar::ToCharImpossible();
-		ss << input[i];
-	}
-	ss >> numericValue;
-	return handleSingleCharacterInput(numericValue);
-}
-
-void	ToChar::displayConversion(long double input){
+void	ToChar::displayConversion(int input){
 	if (input < 32 || input > 126)
 		throw ToChar::ToCharImpossible();
 	std::cout << "char: '" << static_cast<char>(input) << "'\n";
@@ -107,4 +94,13 @@ const char *ToChar::ToCharImpossible::what() const throw(){
 
 const char *ToChar::ToCharNonDisplayable::what() const throw(){
 	return "char: Non displayable.\n";
+}
+
+ToChar::ToChar(){}
+ToChar::~ToChar(){}
+ToChar::ToChar(const ToChar &ref){*this = ref;}
+ToChar&ToChar::operator=(const ToChar &ref){
+	if (this != &ref)
+		*this = ref;
+	return *this;
 }

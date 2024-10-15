@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   UnitTest.cpp                                       :+:      :+:    :+:   */
+/*   Serialization.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 14:52:49 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 16:05:25 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/06 14:47:15 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/14 18:04:43 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "UnitTest.hpp"
+#ifndef SERIALIZATION_HPP
+#define SERIALIZATION_HPP
+
 #include <iostream>
-#include "Color.hpp"
-#include "Debug.hpp"
+# include <stdint.h>
 
-int UnitTest::totalTest = 5;
+class Data;
 
-int	(*UnitTest::select_test(int i))(){
-	int	(*function[8])() = {
-		test00,
-		test01,
-		test02,
-		test03,
-		test04,
-		};
-	return (function[i]);
-}
+class Serialization{
+	private:
+		Serialization();
+		Serialization(const Serialization &ref);
+		Serialization&operator=(const Serialization &ref);
+		~Serialization();
 
-int	UnitTest::getTotalTest(){
-	return totalTest;
-}
+	public:
+		static uintptr_t	serialize(Data* ptr);
+		static Data* 		deserialize(uintptr_t raw);
+};
 
-std::string	getInputTest(){
-	std::string		input;
-	std::getline(std::cin, input);
-	return input;
-}
+
+
+#endif
