@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:11:34 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/07 17:37:49 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/10 13:01:22 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@
 //************************************************************************************
 
 void	ShrubberyCreationForm::howToRun() const {
-	std::string fileName(this->_target);
-	fileName.append("_shrubbery");
-
-	std::ofstream outfile(fileName.c_str());
+	std::ofstream outfile((this->_target + "_shrubbery").c_str());
 	if (!outfile.is_open())
 		throw ShrubberyCreationForm::OpenFileException();
 	outfile << TREE << std::endl << std::endl;

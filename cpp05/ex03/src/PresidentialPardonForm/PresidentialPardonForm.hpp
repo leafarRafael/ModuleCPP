@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:47:51 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/08 08:55:11 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/10 13:02:38 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <string>
 #include "AForm.hpp"
 
-#define SIGN_PARDON 72
-#define EXEC_PARDON 45
+#define SIGN_PARDON 25
+#define EXEC_PARDON 5
 
 class PresidentialPardonForm:public AForm{
 	private:

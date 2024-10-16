@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/08 15:11:12 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/10 12:58:52 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	test25(){
 	msgTest(" Test 25 ");
-	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n      Methods sifnForm and executeForm PresidentialPardonForm. Expectation that generates an exception \n");
+	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n      Methods signForm and executeForm PresidentialPardonForm. Expectation that generates an exception \n");
 	Debug::msg(1, RED ITALI SUBLI BOLD "   Unsigned form:\n");
 
 	std::string name = getName();

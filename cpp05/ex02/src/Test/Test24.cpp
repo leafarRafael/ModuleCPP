@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/08 10:47:45 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/10 12:58:52 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	test24(){
 	msgTest(" Test 24 ");
-	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n      Methods sifnForm and executeForm PresidentialPardonForm. Expectation that generates an exception \n");
+	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n      Methods signForm and executeForm PresidentialPardonForm. Expectation that generates an exception \n");
 	Debug::msg(1, RED ITALI SUBLI BOLD "   Low grade of bureaucrat to sign:\n");
 
 	Debug::msg(1, ITALI SUBLI CYAN "\n  AForm *objForm = new PresidentialPardonForm(\"Ona\");\n");

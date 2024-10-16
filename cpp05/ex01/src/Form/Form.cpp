@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 09:47:30 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/07 11:28:19 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/10 12:22:59 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //********************************* Member function **********************************
 //************************************************************************************
 void	Form::beSigned(Bureaucrat &burr){
-	if (burr.getGrade() >= this->_grade_signed)
+	if (burr.getGrade() > this->_grade_signed)
 		throw Form::GradeTooLowException();	
 	this->_is_signed = true;
 }

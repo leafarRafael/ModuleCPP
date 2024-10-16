@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:11:34 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/07 17:50:10 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/10 12:50:18 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	RobotomyRequestForm::howToRun() const {
 		Debug::msg(1, " ");
 		Debug::msg(1, " has been successfully robotized..\n");
 	}
-	else	
+	else
 		throw RobotomyRequestForm::RobotomyException();
 }
 
@@ -93,6 +93,6 @@ std::string	RobotomyRequestForm::getTarget() const {
 //********************************* Overload exception *******************************
 //************************************************************************************
 
-const char *RobotomyRequestForm::RobotomyException::what() const throw(){
+const char *RobotomyRequestForm::RobotomyException::what() const throw() {
 	return (RED ITALI SUBLI BOLD "robotization has a 50\% chance of success.\n" RESET);
 }
