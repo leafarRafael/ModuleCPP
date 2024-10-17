@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   UnitTest.hpp                                       :+:      :+:    :+:   */
+/*   Debug.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 14:48:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/17 11:33:55 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/09/12 09:45:44 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/09/12 10:35:35 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNITTEST_HPP
-#define UNITTEST_HPP
-#include <string>
+#ifndef DEBUG_HPP
+#define DEBUG_HPP
 
-class UnitTest{
-	private:
-		static int totalTest;
-		UnitTest();
+#include "Color.hpp"
+#include <iostream>
+#include <cstdarg>
+#include <ostream>
 
+class Debug
+{
 	public:
-		static int	(*select_test(int i))();
-		static int	getTotalTest();
+		static int stop;
+		static void	msg(int nbrArgument, ...);
+		static void	msgOrthodox(int nbr, ...);
 };
-std::string	getInputTest();
-int			test00();
-int			test01();
 
 #endif

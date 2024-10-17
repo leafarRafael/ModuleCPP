@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   UnitTest.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 14:48:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/17 11:33:55 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/07/15 12:00:38 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/12 14:11:28 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNITTEST_HPP
-#define UNITTEST_HPP
-#include <string>
+#include "TestManager.hpp"
 
-class UnitTest{
-	private:
-		static int totalTest;
-		UnitTest();
-
-	public:
-		static int	(*select_test(int i))();
-		static int	getTotalTest();
-};
-std::string	getInputTest();
-int			test00();
-int			test01();
-
-#endif
+int	main()
+{
+	TestManager::showOptions();
+	return 0;
+}

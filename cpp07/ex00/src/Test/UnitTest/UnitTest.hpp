@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:48:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/15 13:27:30 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/17 10:08:39 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int			test05();
 int			test06();
 int			test07();
 int			test08();
+int			test09();
 
 #endif

@@ -6,13 +6,13 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2024/10/17 11:31:07 by rbutzke          ###   ########.fr        #
+#    Updated: 2024/10/17 15:34:33 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-----------------------------------------------------------------------------------------
 # Static library
-NAME		:= Iter
+NAME		:= Array
 
 #-----------------------------------------------------------------------------------------
 # Compiler and flags
@@ -32,7 +32,7 @@ SRC_TEST_MANAGER	:= src/Test/TestManager/
 SRC_UNITTEST		:= src/Test/UnitTest/
 SRC_TEST_IMPLEMENTS	:= src/Test/TestImplementation/
 DEBUG				:= src/Debug/
-ITER				:= src/iter/
+ARRAY				:= src/Array/
 
 
 
@@ -43,7 +43,7 @@ INCLUDES			:= -I $(SRC)\
 					-I $(DEBUG)\
 					-I $(SRC_TEST_MANAGER)\
 					-I $(SRC_UNITTEST)\
-					-I $(ITER)\
+					-I $(ARRAY)\
 
 #-----------------------------------------------------------------------------------------
 # Source files

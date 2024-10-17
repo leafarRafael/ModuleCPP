@@ -6,7 +6,7 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2024/10/15 13:52:31 by rbutzke          ###   ########.fr        #
+#    Updated: 2024/10/17 10:09:18 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ FILE_TEST_MANAGER		:= TestManager.cpp
 FILE_UNITTEST			:= UnitTest.cpp
 FILE_TEST				:= Test00.cpp Test01.cpp Test02.cpp\
 							Test03.cpp Test04.cpp Test05.cpp\
-							Test06.cpp Test07.cpp Test08.cpp
+							Test06.cpp Test07.cpp Test08.cpp\
+							Test09.cpp
 
 #-----------------------------------------------------------------------------------------
 # Source files

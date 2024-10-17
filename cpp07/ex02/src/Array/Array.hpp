@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   UnitTest.hpp                                       :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 14:48:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/17 11:33:55 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/17 14:42:07 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/17 15:16:54 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNITTEST_HPP
-#define UNITTEST_HPP
-#include <string>
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
-class UnitTest{
+typedef unsigned int uint;
+
+template <typename T>
+class Array{
 	private:
-		static int totalTest;
-		UnitTest();
+		T*			_array;
+		uint		_len;
 
 	public:
-		static int	(*select_test(int i))();
-		static int	getTotalTest();
+		~Array();
+		Array();
+		Array(uint n);
+		Array(Array const &orin);
+		Array&operator=(Array const &orin);
+		uint	size() const;
+		T &operator[](const uint &index);
+		const T &operator[](const uint &index) const;
 };
-std::string	getInputTest();
-int			test00();
-int			test01();
+
+#include "Array.tpp"
 
 #endif
