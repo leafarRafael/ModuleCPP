@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   UnitTest.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 18:31:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/16 18:00:24 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/09 14:52:49 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/17 11:30:54 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "UnitTest.hpp"
+#include <iostream>
+#include "Color.hpp"
+#include "Debug.hpp"
 
-#ifndef HUMANA_HPP
- #define HUMANA_HPP
+int UnitTest::totalTest = 2;
 
-#include "Weapon.hpp"
+int	(*UnitTest::select_test(int i))(){
+	int	(*function[10])() = {
+		test00,
+		test01,
+		};
+	return (function[i]);
+}
 
-class HumanA
-{
-	private:
-		std::string _name;
-		Weapon&		_weapon;
+int	UnitTest::getTotalTest(){
+	return totalTest;
+}
 
-	public:
-		HumanA(std::string _name);
-		~HumanA();
-		void	attack() const;
-
-};
-
-#endif
+std::string	getInputTest(){
+	std::string		input;
+	std::getline(std::cin, input);
+	return input;
+}

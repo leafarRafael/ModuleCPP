@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:12:18 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 15:42:44 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/18 13:40:34 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int ToChar::handleSingleCharacterInput(int numericValue){
 	if (!isascii(numericValue))
 		throw ToChar::ToCharImpossible();
 	if (isdigit(numericValue))
-		throw ToChar::ToCharImpossible();			
+		throw ToChar::ToCharImpossible();
 	if (isspace(numericValue))
 		throw ToChar::ToCharNonDisplayable();
 	if (isprint(numericValue))

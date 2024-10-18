@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 18:31:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/16 18:00:24 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/17 17:02:28 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/18 15:16:03 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SPAN_HPP
+#define SPAN_HPP
 
-#ifndef HUMANA_HPP
- #define HUMANA_HPP
+#include <list>
+typedef unsigned int uint;
 
-#include "Weapon.hpp"
-
-class HumanA
-{
+class Span{
 	private:
-		std::string _name;
-		Weapon&		_weapon;
+		std::list <int>	_list;
+		uint				_n;
+		Span();
 
 	public:
-		HumanA(std::string _name);
-		~HumanA();
-		void	attack() const;
+		~Span();
+		Span(uint n);
+		Span(const Span & orin);
+		Span&operator=(const Span & orin);
+		void	addNumber(int addnbr);
+		int		shortestSpan(int begin, int end);
+		int		longestSpan(int begin, int end);
 
 };
 

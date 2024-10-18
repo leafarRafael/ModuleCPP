@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   UnitTest.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 18:31:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/16 18:00:24 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/09 14:48:20 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/17 11:33:55 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef UNITTEST_HPP
+#define UNITTEST_HPP
+#include <string>
 
-#ifndef HUMANA_HPP
- #define HUMANA_HPP
-
-#include "Weapon.hpp"
-
-class HumanA
-{
+class UnitTest{
 	private:
-		std::string _name;
-		Weapon&		_weapon;
+		static int totalTest;
+		UnitTest();
 
 	public:
-		HumanA(std::string _name);
-		~HumanA();
-		void	attack() const;
-
+		static int	(*select_test(int i))();
+		static int	getTotalTest();
 };
+std::string	getInputTest();
+int			test00();
+int			test01();
 
 #endif

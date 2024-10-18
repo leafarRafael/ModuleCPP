@@ -6,13 +6,13 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2024/10/18 11:29:05 by rbutzke          ###   ########.fr        #
+#    Updated: 2024/10/18 16:06:45 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-----------------------------------------------------------------------------------------
 # Static library
-NAME		:= EasyFind
+NAME		:= Span
 
 #-----------------------------------------------------------------------------------------
 # Compiler and flags
@@ -32,7 +32,7 @@ SRC_TEST_MANAGER	:= src/Test/TestManager/
 SRC_UNITTEST		:= src/Test/UnitTest/
 SRC_TEST_IMPLEMENTS	:= src/Test/TestImplementation/
 DEBUG				:= src/Debug/
-EASYFIND			:= src/easyfind/
+SRC_SPAN			:= src/Span/
 
 #-----------------------------------------------------------------------------------------
 # Header file includes
@@ -41,11 +41,12 @@ INCLUDES			:= -I $(SRC)\
 					-I $(DEBUG)\
 					-I $(SRC_TEST_MANAGER)\
 					-I $(SRC_UNITTEST)\
-					-I $(EASYFIND)\
+					-I $(SRC_SPAN)\
 
 #-----------------------------------------------------------------------------------------
 # Source files
 FILE_MAIN				:= main.cpp
+FILE_SPAN				:= Span.cpp
 FILE_DEGUB				:= Debug.cpp
 FILE_TEST_MANAGER		:= TestManager.cpp
 FILE_UNITTEST			:= UnitTest.cpp
@@ -55,6 +56,7 @@ FILE_TEST				:= Test00.cpp Test01.cpp\
 # Source files
 SRC_FILES	:=  $(addprefix $(SRC), $(FILE_MAIN))\
 				$(addprefix $(DEBUG), $(FILE_DEGUB))\
+				$(addprefix $(SRC_SPAN), $(FILE_SPAN))\
 				$(addprefix $(SRC_TEST_MANAGER), $(FILE_TEST_MANAGER))\
 				$(addprefix $(SRC_UNITTEST), $(FILE_UNITTEST))\
 				$(addprefix $(SRC_TEST_IMPLEMENTS), $(FILE_TEST))\

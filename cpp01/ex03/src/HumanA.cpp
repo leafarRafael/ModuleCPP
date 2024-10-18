@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:37:05 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/07/16 20:41:10 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/16 18:37:45 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 HumanA::~HumanA(){};
 
-HumanA::HumanA(std::string name, Weapon& weapon):
-_name(name), _weapon(weapon)
+HumanA::HumanA(std::string name):
+_name(name)
 {};
 
 void HumanA::attack() const

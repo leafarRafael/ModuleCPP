@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:12:18 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/14 15:45:28 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/16 11:00:59 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	ToInt::validateNumberFormat(std::string input){
 }
 
 long ToInt::checkRange(long doubleInput){
-	if (doubleInput < std::numeric_limits<int>::min())		
-		throw ToInt::ToIntNonDisplayable();
-	if (doubleInput > std::numeric_limits<int>::max())		
-		throw ToInt::ToIntNonDisplayable();
+	if (doubleInput < std::numeric_limits<int>::min())
+		throw ToInt::ToIntImpossible();
+	if (doubleInput > std::numeric_limits<int>::max())
+		throw ToInt::ToIntImpossible();
 	return (doubleInput);
 }
 

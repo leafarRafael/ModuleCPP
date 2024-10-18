@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Test01.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 18:31:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/16 18:00:24 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/18 16:04:57 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Debug.hpp"
+#include "UnitTest.hpp"
 
-#ifndef HUMANA_HPP
- #define HUMANA_HPP
+int	test01(){
+	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n                         iter ptr Function tolower:\n");
+	Debug::msg(1, GREEN ITALI SUBLI BOLD "   expectation that changes the statement.\n");
 
-#include "Weapon.hpp"
 
-class HumanA
-{
-	private:
-		std::string _name;
-		Weapon&		_weapon;
-
-	public:
-		HumanA(std::string _name);
-		~HumanA();
-		void	attack() const;
-
-};
-
-#endif
+	return 0;
+}

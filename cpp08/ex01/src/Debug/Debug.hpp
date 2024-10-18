@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Debug.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 18:31:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/16 18:00:24 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/09/12 09:45:44 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/09/12 10:35:35 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef DEBUG_HPP
+#define DEBUG_HPP
 
-#ifndef HUMANA_HPP
- #define HUMANA_HPP
+#include "Color.hpp"
+#include <iostream>
+#include <cstdarg>
+#include <ostream>
 
-#include "Weapon.hpp"
-
-class HumanA
+class Debug
 {
-	private:
-		std::string _name;
-		Weapon&		_weapon;
-
 	public:
-		HumanA(std::string _name);
-		~HumanA();
-		void	attack() const;
-
+		static int stop;
+		static void	msg(int nbrArgument, ...);
+		static void	msgOrthodox(int nbr, ...);
 };
 
 #endif
