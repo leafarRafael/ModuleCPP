@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:48:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/17 11:33:55 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/19 16:36:40 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,13 @@ class UnitTest{
 std::string	getInputTest();
 int			test00();
 int			test01();
+int			test02();
+int			test03();
+int			test04();
+int			test05();
+int			test06();
+int			test07();
+int			test08();
+int			test09();
 
 #endif

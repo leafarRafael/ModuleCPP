@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 14:49:20 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/19 11:05:24 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/17 11:34:51 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 #define WHITE   "\033[37m"
+
 #define ITALI	"\033[3m"
 #define BOLD    "\033[1m"
 #define SUBLI   "\033[4m"
+
 #define OK		" [\033[32mOK\033[0m] "
 #define FAILED	" [\033[31mFailed\033[0m] ";
 #define STATUS	"\033[34mStatus:\033[0m"

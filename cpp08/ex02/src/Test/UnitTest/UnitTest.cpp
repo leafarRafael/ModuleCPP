@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   UnitTest.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 17:02:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/20 16:27:19 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/09 14:52:49 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/23 09:09:37 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-#define SPAN_HPP
+#include "UnitTest.hpp"
+#include <iostream>
+#include "Color.hpp"
+#include "Debug.hpp"
 
-#include <list>
-typedef unsigned int uint;
+int UnitTest::totalTest = 3;
 
-class Span{
-	private:
-		std::list <int>	_list;
-		uint			_n;
-		Span();
+int	(*UnitTest::select_test(int i))(){
+	int	(*function[12])() = {
+		test00,
+		test01,
+		test02,
+		};
+	return (function[i]);
+}
 
-	public:
-		~Span();
-		Span(uint n);
-		Span(const Span & orin);
-		Span&operator=(const Span & orin);
-		void	addNumber(int addnbr);
-		int		shortestSpan();
-		int		longestSpan();
+int	UnitTest::getTotalTest(){
+	return totalTest;
+}
 
-		
-		void	fillSpan(uint amount);
-		void	fillSpan(int begin, int end);
-
-};
-
-#endif
+std::string	getInputTest(){
+	std::string		input;
+	std::getline(std::cin, input);
+	return input;
+}

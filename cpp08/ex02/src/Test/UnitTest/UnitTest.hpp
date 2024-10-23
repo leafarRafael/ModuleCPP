@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   UnitTest.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 17:02:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/20 16:27:19 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/10/09 14:48:20 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/10/23 09:03:32 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-#define SPAN_HPP
+#ifndef UNITTEST_HPP
+#define UNITTEST_HPP
+#include <string>
 
-#include <list>
-typedef unsigned int uint;
-
-class Span{
+class UnitTest{
 	private:
-		std::list <int>	_list;
-		uint			_n;
-		Span();
+		static int totalTest;
+		UnitTest();
 
 	public:
-		~Span();
-		Span(uint n);
-		Span(const Span & orin);
-		Span&operator=(const Span & orin);
-		void	addNumber(int addnbr);
-		int		shortestSpan();
-		int		longestSpan();
-
-		
-		void	fillSpan(uint amount);
-		void	fillSpan(int begin, int end);
-
+		static int	(*select_test(int i))();
+		static int	getTotalTest();
 };
+std::string	getInputTest();
+int			test00();
+int			test01();
+int			test02();
 
 #endif

@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   Debug.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 17:02:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/20 16:27:19 by rbutzke          ###   ########.fr       */
+/*   Created: 2024/09/12 09:45:44 by rbutzke           #+#    #+#             */
+/*   Updated: 2024/09/12 10:35:35 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-#define SPAN_HPP
+#ifndef DEBUG_HPP
+#define DEBUG_HPP
 
-#include <list>
-typedef unsigned int uint;
+#include "Color.hpp"
+#include <iostream>
+#include <cstdarg>
+#include <ostream>
 
-class Span{
-	private:
-		std::list <int>	_list;
-		uint			_n;
-		Span();
-
+class Debug
+{
 	public:
-		~Span();
-		Span(uint n);
-		Span(const Span & orin);
-		Span&operator=(const Span & orin);
-		void	addNumber(int addnbr);
-		int		shortestSpan();
-		int		longestSpan();
-
-		
-		void	fillSpan(uint amount);
-		void	fillSpan(int begin, int end);
-
+		static int stop;
+		static void	msg(int nbrArgument, ...);
+		static void	msgOrthodox(int nbr, ...);
 };
 
 #endif

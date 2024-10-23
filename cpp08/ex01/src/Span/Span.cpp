@@ -6,14 +6,17 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:02:28 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/18 18:22:02 by rbutzke          ###   ########.fr       */
+/*   Updated: 2024/10/19 16:38:28 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <cstdlib>
+#include <ctime>
 #include <stdexcept>
 #include <iterator>
 #include <algorithm>
+#include "Color.hpp"
 
 Span::~Span(){}
 
@@ -25,8 +28,7 @@ Span::Span(const Span & orin):_list(orin._n), _n(orin._n){
 }
 
 Span &Span::operator=(const Span & orin){
-	if (this != &orin)
-	{
+	if (this != &orin){
 		this->_list = orin._list;
 		this->_n = orin._n;
 	}
@@ -35,25 +37,52 @@ Span &Span::operator=(const Span & orin){
 
 void	Span::addNumber(int addnbr){
 	if (_list.size() == _n)
-		throw std::runtime_error("addNumber exception: Number of elements exceeded\n");
+		throw std::runtime_error(RED "addNumber exception: Number of elements exceeded.\n" RESET);
 	this->_list.push_back(addnbr);
 }
 
-int		Span::shortestSpan(int begin, int end){
-	std::list<int>	temp(_list);
-
-
+int		Span::shortestSpan(){
+	if (_list.size() <= 1)
+		throw std::runtime_error(RED "shortestSpan() exception: no span can be found.\n" RESET);
+	std::list<int>				temp(_list);
 	temp.sort();
-	std::list<int>::iterator	itBegin, itEnd;
-	itBegin = std::find(temp.begin(), temp.end(), begin);
-	itEnd = std::find(temp.begin(), temp.end(), end);
-	int x = 0;
-	for (int i = 0; itBegin != itEnd; x++, i++, itBegin++){}
-	return x;
+	std::list<int>::iterator	itNext = temp.begin(), itBegin;
+	itBegin = itNext++;
+	int value =  *itNext - *itBegin;
+	while (itNext != temp.end()){
+		if (value >= (*itNext - *itBegin))
+			value = *itNext - *itBegin;
+		itNext++;
+		itBegin++;
+	}
+	return value;
 }
 
-int		Span::longestSpan(int begin, int end){
-	if (begin > end)
-		return 0;
-	return 1;
+int		Span::longestSpan(){
+	if (_list.size() <= 1)
+		throw std::runtime_error(RED "longestSpan() exception: no span can be found.\n" RESET);
+	std::list<int>				temp(_list);
+	temp.sort();
+	return temp.back() - temp.front();
+}
+
+void	Span::fillSpan(uint amount){
+	if (amount > _n)
+		throw std::runtime_error(RED "fillSpan() exception: number of elements greater than capacity.\n" RESET);
+	std::srand(std::time(0));
+	for(uint i = 0; i < amount; i++)
+		addNumber(std::rand() % amount);
+}
+
+void	Span::fillSpan(int begin, int end){
+	if ((end - begin) > static_cast<int>(_n) || (begin - end) > static_cast<int>(_n))
+		throw std::runtime_error(RED "fillSpan() exception: number of elements greater than capacity.\n" RESET);
+	int	amount = end - begin;
+	if (amount < 0){
+		for(int i = begin; i < end; i--)
+			addNumber(i);
+	}else{
+		for(int i = begin; i < end; i++)
+			addNumber(i);
+	}
 }

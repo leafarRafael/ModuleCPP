@@ -6,13 +6,13 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2024/10/19 16:36:48 by rbutzke          ###   ########.fr        #
+#    Updated: 2024/10/23 09:03:54 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-----------------------------------------------------------------------------------------
 # Static library
-NAME		:= Span
+NAME		:= MutatedAbomination
 
 #-----------------------------------------------------------------------------------------
 # Compiler and flags
@@ -32,7 +32,7 @@ SRC_TEST_MANAGER	:= src/Test/TestManager/
 SRC_UNITTEST		:= src/Test/UnitTest/
 SRC_TEST_IMPLEMENTS	:= src/Test/TestImplementation/
 DEBUG				:= src/Debug/
-SRC_SPAN			:= src/Span/
+MUTANTSTACK			:= src/MutantStack/
 
 #-----------------------------------------------------------------------------------------
 # Header file includes
@@ -41,24 +41,20 @@ INCLUDES			:= -I $(SRC)\
 					-I $(DEBUG)\
 					-I $(SRC_TEST_MANAGER)\
 					-I $(SRC_UNITTEST)\
-					-I $(SRC_SPAN)\
+					-I $(MUTANTSTACK)\
 
 #-----------------------------------------------------------------------------------------
 # Source files
 FILE_MAIN				:= main.cpp
-FILE_SPAN				:= Span.cpp
 FILE_DEGUB				:= Debug.cpp
 FILE_TEST_MANAGER		:= TestManager.cpp
 FILE_UNITTEST			:= UnitTest.cpp
-FILE_TEST				:= Test00.cpp Test01.cpp Test02.cpp Test03.cpp\
-						   Test04.cpp Test05.cpp Test06.cpp Test07.cpp\
-						   Test08.cpp Test09.cpp 
+FILE_TEST				:= Test00.cpp Test01.cpp Test02.cpp
 
 #-----------------------------------------------------------------------------------------
 # Source files
 SRC_FILES	:=  $(addprefix $(SRC), $(FILE_MAIN))\
 				$(addprefix $(DEBUG), $(FILE_DEGUB))\
-				$(addprefix $(SRC_SPAN), $(FILE_SPAN))\
 				$(addprefix $(SRC_TEST_MANAGER), $(FILE_TEST_MANAGER))\
 				$(addprefix $(SRC_UNITTEST), $(FILE_UNITTEST))\
 				$(addprefix $(SRC_TEST_IMPLEMENTS), $(FILE_TEST))\
