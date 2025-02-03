@@ -6,13 +6,13 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2025/01/13 11:57:31 by rbutzke          ###   ########.fr        #
+#    Updated: 2025/01/17 15:31:02 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-----------------------------------------------------------------------------------------
 # Static library
-NAME		:= MutatedAbomination
+NAME		:= RPN
 
 #-----------------------------------------------------------------------------------------
 # Compiler and flags
@@ -28,36 +28,27 @@ CMD_CLEAN	:= rm -Rf
 # DIRECTORY and Header file
 SRC					:= src/
 COLOR				:= Color/
-SRC_TEST_MANAGER	:= src/Test/TestManager/
-SRC_UNITTEST		:= src/Test/UnitTest/
-SRC_TEST_IMPLEMENTS	:= src/Test/TestImplementation/
 DEBUG				:= src/Debug/
-MUTANTSTACK			:= src/MutantStack/
+RPN					:= src/RPN/
 
 #-----------------------------------------------------------------------------------------
 # Header file includes
 INCLUDES			:= -I $(SRC)\
 					-I $(COLOR)\
 					-I $(DEBUG)\
-					-I $(SRC_TEST_MANAGER)\
-					-I $(SRC_UNITTEST)\
-					-I $(MUTANTSTACK)\
+					-I $(RPN)\
 
 #-----------------------------------------------------------------------------------------
 # Source files
 FILE_MAIN				:= main.cpp
 FILE_DEGUB				:= Debug.cpp
-FILE_TEST_MANAGER		:= TestManager.cpp
-FILE_UNITTEST			:= UnitTest.cpp
-FILE_TEST				:= Test00.cpp Test01.cpp Test02.cpp
+FILE_RPN				:= RPN.cpp
 
 #-----------------------------------------------------------------------------------------
 # Source files
 SRC_FILES	:=  $(addprefix $(SRC), $(FILE_MAIN))\
 				$(addprefix $(DEBUG), $(FILE_DEGUB))\
-				$(addprefix $(SRC_TEST_MANAGER), $(FILE_TEST_MANAGER))\
-				$(addprefix $(SRC_UNITTEST), $(FILE_UNITTEST))\
-				$(addprefix $(SRC_TEST_IMPLEMENTS), $(FILE_TEST))\
+				$(addprefix $(RPN), $(FILE_RPN))\
 
 #-----------------------------------------------------------------------------------------
 # Directory for object files
@@ -98,7 +89,7 @@ re_run: re
 debug: re
 	./$(NAME) "DEBUG"
 
-valgrind:
+valgrind: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 .PHONY: all clean fclean re

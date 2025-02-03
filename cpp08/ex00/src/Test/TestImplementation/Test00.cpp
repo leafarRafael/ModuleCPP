@@ -6,7 +6,7 @@
 /*   By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 19:27:38 by rbutzke           #+#    #+#             */
-/*   Updated: 2024/10/18 13:37:52 by rbutzke          ###   ########.fr       */
+/*   Updated: 2025/01/13 11:00:09 by rbutzke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	test00(){
 	Debug::msg(1, YELLOW ITALI SUBLI BOLD "\n                         iter ptr Function toupper:\n");
-	Debug::msg(1, GREEN ITALI SUBLI BOLD "   expectation that changes the statement.\n");
+	Debug::msg(1, GREEN ITALI SUBLI BOLD "   Expectation that generated an exception.\n");
 
 	std::vector<int > vec;
 

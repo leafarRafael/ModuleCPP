@@ -6,58 +6,45 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2025/01/13 11:57:31 by rbutzke          ###   ########.fr        #
+#    Updated: 2025/02/03 13:17:22 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-----------------------------------------------------------------------------------------
 # Static library
-NAME		:= MutatedAbomination
+NAME			:= PmergeMe
 
 #-----------------------------------------------------------------------------------------
 # Compiler and flags
-CFLAGS		:= -Wall -Werror -Wextra -std=c++98 -g3
-CPP			:= c++
-O_FLAGS		:= -c
+CFLAGS			:= -Wall -Werror -Wextra -std=c++98 -g3
+CPP				:= c++
+O_FLAGS			:= -c
 
 #-----------------------------------------------------------------------------------------
 # Command to clean up files
-CMD_CLEAN	:= rm -Rf
+CMD_CLEAN		:= rm -Rf
 
 #-----------------------------------------------------------------------------------------
 # DIRECTORY and Header file
-SRC					:= src/
-COLOR				:= Color/
-SRC_TEST_MANAGER	:= src/Test/TestManager/
-SRC_UNITTEST		:= src/Test/UnitTest/
-SRC_TEST_IMPLEMENTS	:= src/Test/TestImplementation/
-DEBUG				:= src/Debug/
-MUTANTSTACK			:= src/MutantStack/
+SRC				:= src/
+PMERGEME		:= src/PmergeMe/
+INCLUDE			:= include/
 
 #-----------------------------------------------------------------------------------------
 # Header file includes
 INCLUDES			:= -I $(SRC)\
-					-I $(COLOR)\
-					-I $(DEBUG)\
-					-I $(SRC_TEST_MANAGER)\
-					-I $(SRC_UNITTEST)\
-					-I $(MUTANTSTACK)\
+					-I $(PMERGEME)\
+					-I $(INCLUDE)\
 
 #-----------------------------------------------------------------------------------------
 # Source files
 FILE_MAIN				:= main.cpp
-FILE_DEGUB				:= Debug.cpp
-FILE_TEST_MANAGER		:= TestManager.cpp
-FILE_UNITTEST			:= UnitTest.cpp
-FILE_TEST				:= Test00.cpp Test01.cpp Test02.cpp
+FILE_PMERGEME			:= PmergeMe.cpp
 
 #-----------------------------------------------------------------------------------------
 # Source files
 SRC_FILES	:=  $(addprefix $(SRC), $(FILE_MAIN))\
-				$(addprefix $(DEBUG), $(FILE_DEGUB))\
-				$(addprefix $(SRC_TEST_MANAGER), $(FILE_TEST_MANAGER))\
-				$(addprefix $(SRC_UNITTEST), $(FILE_UNITTEST))\
-				$(addprefix $(SRC_TEST_IMPLEMENTS), $(FILE_TEST))\
+				$(addprefix $(PMERGEME), $(FILE_PMERGEME))\
 
 #-----------------------------------------------------------------------------------------
 # Directory for object files
@@ -89,16 +76,10 @@ fclean: clean
 
 re: fclean all
 
-run:
-	./$(NAME)
-
 re_run: re
 	./$(NAME)
 
 debug: re
-	./$(NAME) "DEBUG"
-
-valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+	./$(NAME) "$$(shuf -i 1-3000 -n 3000 | tr '\n' ' ')"
 
 .PHONY: all clean fclean re
