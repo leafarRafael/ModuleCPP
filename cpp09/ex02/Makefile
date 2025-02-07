@@ -6,7 +6,7 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2025/02/03 13:17:22 by rbutzke          ###   ########.fr        #
+#    Updated: 2025/02/03 16:29:55 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,6 @@ re_run: re
 	./$(NAME)
 
 debug: re
-	./$(NAME) "$$(shuf -i 1-3000 -n 3000 | tr '\n' ' ')"
+	valgrind  ./$(NAME) "$$(shuf -i 1-99 -n 3000 | tr '\n' ' ')"
 
 .PHONY: all clean fclean re

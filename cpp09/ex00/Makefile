@@ -6,7 +6,7 @@
 #    By: rbutzke <rbutzke@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 10:56:45 by rbutzke           #+#    #+#              #
-#    Updated: 2025/01/13 13:16:21 by rbutzke          ###   ########.fr        #
+#    Updated: 2025/02/03 16:13:04 by rbutzke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ fclean: clean
 re: fclean all
 
 run:
-	./$(NAME)
+	./$(NAME) input.txt
 
 re_run: re
 	./$(NAME)
